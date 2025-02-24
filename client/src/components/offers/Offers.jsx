@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/axios";
 import { useParams, Link } from "react-router-dom";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
@@ -14,9 +14,9 @@ const Offers = () => {
     const fetchPackages = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/offers/${offerSlug}`
+          `/api/offers/${offerSlug}`
         );
-        console.log(response);
+        // console.log(response);
         setPackages(response.data.packages);
         setLoading(false);
       } catch (err) {

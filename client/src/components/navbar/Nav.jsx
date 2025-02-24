@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
@@ -14,10 +14,10 @@ const Nav = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = "http://localhost:3000";
+        // const apiUrl = "http://localhost:3000";
         const [countriesRes, offersRes] = await Promise.all([
-          axios.get(`${apiUrl}/api/countries`),
-          axios.get(`${apiUrl}/api/offers`),
+          axios.get(`/api/countries`),
+          axios.get(`/api/offers`),
         ]);
 
         setCountries(countriesRes.data);

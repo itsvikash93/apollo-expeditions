@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../../utils/axios";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
 
@@ -16,9 +16,9 @@ const CountryPage = () => {
     const fetchPlaces = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/countries/${countrySlug}`
+          `/api/countries/${countrySlug}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setCountry(response.data);
         setPlaces(response.data.popularPlaces);
         setLoading(false);

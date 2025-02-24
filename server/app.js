@@ -16,7 +16,9 @@ app.use(cors());
 // app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.get("/", (req, res) => {
+  res.json("Apollo Expeditions API is running!");
+});
 app.use("/", indexRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/packages", packageRoutes);
