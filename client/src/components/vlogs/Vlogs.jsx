@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axios";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
 
@@ -11,7 +11,7 @@ const Vlogs = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/vlogs");
+        const response = await axios.get("/api/vlogs");
         setVideos(response.data);
       } catch (err) {
         setError("Failed to load vlogs. Please try again later.");
