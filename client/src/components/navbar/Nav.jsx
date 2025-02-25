@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
 
 const Nav = () => {
   const location = useLocation();
@@ -45,14 +44,14 @@ const Nav = () => {
   };
 
   return (
-<nav className="bg-white/40 self-center backdrop-blur-lg border border-white/60 shadow-lg rounded-full top-2 absolute w-[80%] z-50">
-<div className="max-w-10xl mx-auto px-0 sm:px-6">
+    <nav className="bg-white/40 self-center backdrop-blur-lg border border-white/60 shadow-lg rounded-full top-2 absolute w-[80%] z-50">
+      <div className="max-w-10xl mx-auto px-0 sm:px-6">
         <div className="flex justify-between items-center h-12">
           <Link to="/" onClick={() => handleNavigation("/")}>
             <img
-              src={logo}
+              src="/apollo-logo.jpg"
               alt="Apollo Expeditions Logo"
-              className="h-48 w-auto object-contain"
+              className="h-8 w-auto object-contain"
             />
           </Link>
 
