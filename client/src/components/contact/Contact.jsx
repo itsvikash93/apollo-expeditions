@@ -1,48 +1,48 @@
 import React from "react";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
-import qr from "../../assets/QR.png";
-import Nav from "../navbar/Nav";
+import qr from "../../assets/QR.jpg";
 import Footer from "../footer/Footer";
+import Nav from "../navbar/Nav";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col bg_Third">
+    <div className="">
       <Nav className="absolute" />
 
       <div className="mt-24 h-full min-h-96 flex flex-col">
         {/* Header */}
-        <h1 className="First text-center text-5xl tracking-wide custom-font">Contact Us</h1>
+        <h1 className=" text-center text-5xl tracking-wide custom-font1">Contact Us</h1>
 
         {/* Main Container */}
         <div className="flex h-[60vh] mt-5 px-8">
           {/* Left Section: Contact Details */}
           <div className="w-1/2 p-6 pl-20 mt-10 ml-36 rounded-lg bg_Third text-First ">
-            <h2 className="text-3xl font-semibold First">Get in Touch</h2>
+            <h2 className="text-3xl font-semibold text-gray-500">Get in Touch</h2>
 
             <div className="mt-4 flex flex-col gap-2 font-semibold">
-              <p className="text-2xl">John Doe</p>
-              <p className="text-lg Second">CEO, TravelTech</p>
+              <p className="text-2xl">Jeevraj Sharma</p>
+              <p className="text-md "> Founder & Manager</p>
 
               <div className="flex items-center gap-2">
-                <FaEnvelope className="text-Second" />
+                <FaEnvelope />
                 <a
-                  href="mailto:info@traveltect.com"
+                  href="mailto:apolloexpeditions@outlook.in"
                   className="hover:underline First"
                 >
-                  info@traveltect.com
+                  apolloexpeditions@outlook.in
                 </a>
               </div>
 
               <div className="flex items-center gap-2">
-                <FaPhone className="text-Second" />
+                <FaPhone />
                 <a href="tel:12346552" className="hover:underline First">
-                  12346552
+                  +91 99830 65030
                 </a>
               </div>
 
               <div className="flex items-center gap-2">
-                <FaMapMarkerAlt className="text-red-500" />
-                <p>123 Travel Lane, Travel City, USA</p>
+                <FaMapMarkerAlt />
+                <p>Jaipur, Rajasthan (IN) | Dehradun, Uttarakhand (IN)</p>
               </div>
 
               <div className="mt-4 flex items-center">
@@ -51,6 +51,9 @@ const Contact = () => {
                   alt="QR Code"
                   className="w-24 h-24 rounded-md shadow-md"
                 />
+                <p className=" ml-2 text-sm text-gray-500">
+                  Scan this QR code to Whatsapp us
+                </p>
               </div>
             </div>
           </div>
@@ -61,7 +64,7 @@ const Contact = () => {
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium First"
+                  className="block text-sm font-medium"
                 >
                   Name
                 </label>
@@ -69,7 +72,7 @@ const Contact = () => {
                   type="text"
                   name="name"
                   id="name"
-                  className="p-2 mt-1 block w-full rounded-md border border-First shadow-sm focus:ring-Second focus:border-Second sm:text-sm text-First bg-transparent"
+                  className="p-2 mt-1 block w-full rounded-md border shadow-sm  sm:text-sm text-First bg-transparent"
                   placeholder="Your name"
                 />
               </div>
@@ -77,7 +80,7 @@ const Contact = () => {
               <div className="mb-4">
                 <label
                   htmlFor="contactNo"
-                  className="block text-sm font-medium First"
+                  className="block text-sm font-medium"
                 >
                   Contact Number
                 </label>
@@ -85,7 +88,7 @@ const Contact = () => {
                   type="text"
                   name="contactNo"
                   id="contactNo"
-                  className="p-2 mt-1 block w-full rounded-md border border-First shadow-sm focus:ring-Second focus:border-Second sm:text-sm text-First bg-transparent"
+                  className="p-2 mt-1 block w-full rounded-md border shadow-sm sm:text-sm text-First bg-transparent"
                   placeholder="Your contact number"
                 />
               </div>
@@ -93,7 +96,7 @@ const Contact = () => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium First"
+                  className="block text-sm font-medium"
                 >
                   Email
                 </label>
@@ -101,7 +104,7 @@ const Contact = () => {
                   type="email"
                   name="email"
                   id="email"
-                  className="p-2 mt-1 block w-full rounded-md border border-First shadow-sm focus:ring-Second focus:border-Second sm:text-sm text-First bg-transparent"
+                  className="p-2 mt-1 block w-full rounded-md border shadow-sm sm:text-sm text-First bg-transparent"
                   placeholder="Your email"
                 />
               </div>
@@ -109,7 +112,7 @@ const Contact = () => {
               <div className="mb-4">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium First"
+                  className="block text-sm font-medium"
                 >
                   Message
                 </label>
@@ -124,7 +127,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full inline-flex justify-center rounded-md bg_Second py-2 px-4 text-sm font-bold First shadow-md hover:bg_First hover:text-Third transition"
+                className="w-full inline-flex justify-center rounded-md font-semibold text-white bg-gray-600 py-2 px-4 text-sm  transition"
               >
                 Submit
               </button>
@@ -142,8 +145,8 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
-      <Footer />
 
+      <Footer />
     </div>
   );
 };

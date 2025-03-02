@@ -6,10 +6,10 @@ const AboutUs = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center gap-12">
           <div className="w-full text-center">
-            <h2 className="text-base Second font-bold tracking-wide uppercase mb-4">
+            <h2 className="text-base text-gray-600 font-bold tracking-wide uppercase mb-4">
               About Us
             </h2>
-            <h3 className="text-5xl custom-font First mb-6">
+            <h3 className="text-5xl custom-font1  mb-6">
               Apollo Expeditions
             </h3>
             <p className="text-xl w-[70%] translate-x-48 leading-relaxed text-gray-700">
@@ -21,6 +21,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+      <hr />
     </section>
   );
 };

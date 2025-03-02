@@ -29,8 +29,8 @@ const Associations = () => {
     <section className="py-10 bg_Third">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="mt-2 text-5xl tracking-wide custom-font leading-8 First sm:text-4xl">
-            Trusted Partners & Associations
+          <h3 className="mt-2 text-5xl tracking-wide custom-font1 leading-8 sm:text-4xl">
+           Our Associations & Partnerships
           </h3>
         </div>
 
@@ -45,8 +45,8 @@ const Associations = () => {
                 alt={partner.name}
                 className="h-24 w-auto mb-6 object-contain rounded-full"
               />
-              <h4 className="text-xl font-bold First mb-2">{partner.name}</h4>
-              <p className="Second text-center">{partner.description}</p>
+              <h4 className="text-xl custom-font1 mb-2">{partner.name}</h4>
+              <p className="text-gray-600 text-center">{partner.description}</p>
             </div>
           ))}
         </div>

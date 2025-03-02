@@ -23,7 +23,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="relative top-0 h-[90vh] w-full overflow-hidden">
+      <div className="relative top-0 h-[80vh] w-full overflow-hidden">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           spaceBetween={30}
@@ -50,7 +50,7 @@ const Hero = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="h-20 w-[150%] bg_Third absolute -left-10 -bottom-10 z-10 blur-md"></div>
+        {/* <div className="h-20 w-[150%] bg_Third absolute -left-10 -bottom-10 z-10 blur-md"></div> */}
       </div>
     </>
   );

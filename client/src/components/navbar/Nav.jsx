@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { ImCross } from "react-icons/im";
+import { MdKeyboardArrowDown } from "react-icons/md";
+
 
 const Nav = () => {
   const location = useLocation();
@@ -13,7 +18,6 @@ const Nav = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const apiUrl = "http://localhost:3000";
         const [countriesRes, offersRes] = await Promise.all([
           axios.get(`/api/countries`),
           axios.get(`/api/offers`),
@@ -36,6 +40,7 @@ const Nav = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+
   const handleNavigation = (path) => {
     setActiveDropdown(null);
     setTimeout(() => {
@@ -49,9 +54,9 @@ const Nav = () => {
         <div className="flex justify-between items-center h-12">
           <Link to="/" onClick={() => handleNavigation("/")}>
             <img
-              src="/apollo-logo.jpg"
+              src={logo}
               alt="Apollo Expeditions Logo"
-              className="h-8 w-auto object-contain"
+              className="h-48 w-auto object-contain"
             />
           </Link>
 
@@ -62,16 +67,17 @@ const Nav = () => {
           >
             <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
               {isMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
+                <GiHamburgerMenu />
               ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
+
+                <ImCross />
               )}
             </svg>
           </button>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex text-xl custom-font tracking-wider justify-between gap-6 px-6">
-            <Link to="/" className="First1">
+          <div className="hidden md:flex text-md font-semibold justify-between gap-6 px-6">
+            <Link to="/" className=" hover:text-gray-500">
               Home
             </Link>
 
@@ -81,37 +87,35 @@ const Nav = () => {
               onMouseEnter={() => setActiveDropdown("offers")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <span className="First1 flex items-center cursor-pointer">
-                Offers & Packages
-                <svg
-                  className="ml-1 w-4 h-4 transform transition-transform"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
+              <span className=" flex items-center cursor-pointer hover:text-gray-500">
+                Packages & Offers
+                <MdKeyboardArrowDown className="text-xl mt-1" />
               </span>
 
               {activeDropdown === "offers" && (
-                <div className="absolute bg_Third shadow-md -translate-x-20 rounded-md left-0 w-80">
+                <div className="absolute bg_Third shadow-md -translate-x-20 rounded-md left-0 w-64">
                   {offers.length > 0 ? (
                     offers.map((offer) => (
                       <Link
                         key={offer._id}
                         to={`/offers/${offer.slug}`}
-                        className="block px-4 py-1 First1 text-center"
-                        onClick={() => handleNavigation(`/offers/${offer.slug}`)}
+                        className="block px-4 py-1 mt-1 text-center hover:text-gray-500"
+                        onClick={() =>
+                          handleNavigation(`/offers/${offer.slug}`)
+                        }
                       >
                         {offer.name}
+
                       </Link>
                     ))
                   ) : (
-                    <p className="px-4 py-2 First1">No Offers</p>
+                    <p className="px-4 py-2  hover:text-gray-500">No Offers</p>
                   )}
                 </div>
               )}
             </div>
 
-            <Link to="/vlogs" className="First1">
+            <Link to="/vlogs" className="hover:text-gray-500">
               Our Vlogs
             </Link>
 
@@ -121,14 +125,9 @@ const Nav = () => {
               onMouseEnter={() => setActiveDropdown("countries")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <span className="First1 flex items-center cursor-pointer">
+              <span className=" flex items-center cursor-pointer hover:text-gray-500">
                 Travel Guide
-                <svg
-                  className="ml-1 w-4 h-4 transform transition-transform"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
+                <MdKeyboardArrowDown className="text-xl mt-1" />
               </span>
 
               {activeDropdown === "countries" && (
@@ -138,7 +137,7 @@ const Nav = () => {
                       <Link
                         key={country.slug}
                         to={`/encyclopedia/${country.slug}`}
-                        className="block px-4 py-1 First1 text-center"
+                        className="block px-4 py-1  text-center hover:text-gray-500"
                         onClick={() =>
                           handleNavigation(`/encyclopedia/${country.slug}`)
                         }
@@ -147,47 +146,18 @@ const Nav = () => {
                       </Link>
                     ))
                   ) : (
-                    <p className="px-4 py-2 First">No Countries</p>
+                    <p className="px-4 py-2 hover:text-gray-500">No Countries</p>
                   )}
                 </div>
               )}
             </div>
 
-            <Link to="/contact" className="First1">
+            <Link to="/contact" className="hover:text-gray-600">
               Contact Us
             </Link>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg_Third">
-            <Link
-              to="/"
-              className="block First px-3 py-2 hover:bg_Second"
-            >
-              Home
-            </Link>
-            <Link
-              to="/offers"
-              className="block First px-3 py-2 hover:bg_Second"
-            >
-              Offers & Packages
-            </Link>
-            <Link
-              to="/vlogs"
-              className="block First px-3 py-2 hover:bg_Second"
-            >
-              Our Vlogs
-            </Link>
-            <Link
-              to="/contact"
-              className="block First px-3 py-2 hover:bg_Second"
-            >
-              Contact Us
-            </Link>
-          </div>
-        )}
       </div>
     </nav>
   );

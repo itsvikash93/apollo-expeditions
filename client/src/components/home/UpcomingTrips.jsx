@@ -3,6 +3,9 @@ import Himalayas from "../../assets/Himalayas.jpg";
 import Amazon from "../../assets/Amazon.jpg";
 import Africa from "../../assets/Africa.jpeg";
 import { useNavigate } from "react-router-dom";
+import { GrLocation } from "react-icons/gr";
+import { BsCalendar2 } from "react-icons/bs";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const UpcomingTrips = () => {
   const navigate = useNavigate();
@@ -35,8 +38,8 @@ const UpcomingTrips = () => {
     <section className="py-10 bg-Secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="mt-2 text-5xl leading-8 custom-font  tracking-wide First sm:text-4xl">
-            Upcoming Expeditions
+          <h3 className="mt-2 text-5xl leading-8 custom-font1 tracking-wide sm:text-4xl">
+            Upcoming Expeditions & Trips
           </h3>
         </div>
 
@@ -55,44 +58,24 @@ const UpcomingTrips = () => {
               </div>
 
               <div className="p-6">
-                <h4 className="text-xl font-bold text-Primary mb-2">
+                <h4 className="text-xl custom-font1 text-Primary mb-2">
                   {trip.title}
                 </h4>
                 <div className="flex items-center text-Fourth mb-2">
-                  <svg
-                    className="h-5 w-5 mr-2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+                  <GrLocation className="mr-2 text-2xl" />
+
                   {trip.location}
                 </div>
                 <div className="flex items-center text-Fourth mb-4">
-                  <svg
-                    className="h-5 w-5 mr-2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
+                  <BsCalendar2 className=" mr-2 text-[22px]" />
                   {trip.date}
                 </div>
                 <div className="flex justify-center">
                   <button
                     onClick={() => navigate("/contact")}
-                    className="mt-4 px-6 py-2 bg_First Third font-bold rounded-lg transition-transform transform shadow-md"
+                    className="mt-4 px-6 py-2 bg-black Third flex font-bold rounded-lg transition-transform transform shadow-md"
                   >
-                    Contact Us →
+                    More Details <FaArrowRightLong className="ml-1 mt-[6px]"/>
                   </button>
                 </div>
               </div>

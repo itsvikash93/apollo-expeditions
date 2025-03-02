@@ -22,34 +22,23 @@ const Experinces = () => {
     <section className="py-10 bg_Third">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="mt-2 text-5xl leading-8 custom-font tracking-wide First sm:text-4xl">
+          <h3 className="mt-2 text-5xl leading-8 custom-font1 tracking-wide  sm:text-4xl">
             Traveler's Experiences
           </h3>
         </div>
-        {/* <Swiper
-          slidesPerView={'auto'}
-          spaceBetween={30}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        > */}
+       
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
           loop={true}
           autoplay={{
-            delay: 5000,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           pagination={{
             clickable: true,
           }}
           modules={[Pagination, Autoplay]}
-          className="mySwiper"
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide

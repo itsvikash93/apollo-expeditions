@@ -18,7 +18,7 @@ router.get("/:slug", async (req, res) => {
     const country = await countryModel
       .findOne({ slug: req.params.slug }).populate("popularPlaces")
       
-    console.log(country);
+    // console.log(country);
     if (!country) return res.status(404).json({ message: "Country not found" });
     res.json(country);
   } catch (err) {

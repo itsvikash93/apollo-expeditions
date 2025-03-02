@@ -23,12 +23,14 @@ const Vlogs = () => {
     fetchVideos();
   }, []);
 
+
   return (
-    <div className="flex flex-col bg_Third">
+
+    <div className="w-full min-h-screen bg_Third ">
       <Nav className="absolute" />
       <div className="w-full min-h-screen bg_Third px-4 sm:px-6 lg:px-8 py-8 mt-16 sm:mt-20 lg:mt-24">
-        <h1 className="text-2xl sm:text-3xl lg:text-5xl tracking-wide custom-font First mb-6 sm:mb-8 lg:mb-10 text-center">
-          Our Travel Vlogs
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl tracking-wide custom-font1 mb-6 sm:mb-8 lg:mb-10 text-center">
+          logo Blue Planet Documentaries
         </h1>
 
         {/* Show loading indicator */}
@@ -62,14 +64,10 @@ const Vlogs = () => {
                   ></iframe>
                 </div>
                 <div className="p-6">
-                  <h2 className="text-xl font-bold First mb-3">{video.title}</h2>
+                  <h2 className="text-xl font-bold mb-3">{video.title}</h2>
                   <p className="text-gray-600 mb-6 line-clamp-3">{video.description}</p>
 
                   <div className="flex justify-between items-center text-xs text-gray-500">
-                    <span className="font-medium">{video.views} views</span>
-                    <span className="font-medium">
-                      {new Date(video.date).toLocaleDateString("en-GB")}
-                    </span>
                   </div>
                 </div>
               </div>
