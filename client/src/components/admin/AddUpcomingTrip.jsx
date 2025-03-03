@@ -2,14 +2,15 @@ import { useForm } from "react-hook-form";
 import axios from "../../utils/axios";
 import { useState } from "react";
 import SideNav from "./SideNav";
-
-const UpcomingTrip = () => {
+import { useNavigate } from "react-router-dom";
+const AddUpcomingTrip = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+  const navigate = useNavigate();
 
   // Function to format the date range
   const formatDate = (startDate, endDate) => {
@@ -52,29 +53,22 @@ const UpcomingTrip = () => {
       console.log(formData);
 
       axios.post("/admin/upcoming-trips", formData).then((res) => {
-        axios
-          .put(res.data.imageUrl, data.image[0], {
-            headers: {
-              "Content-Type": "image/jpeg",
-            },
-          })
-          .then((res) => {
-            console.log("image uploaded");
-          });
+        const res1 = axios.put(res.data.imageUrl, data.image[0], {
+          headers: {
+            "Content-Type": "image/jpeg",
+          },
+        });
 
-        axios
-          .put(res.data.pdfUrl, data.pdf[0], {
-            headers: {
-              "Content-Type": "application/pdf",
-            },
-          })
-          .then((res) => {
-            console.log("pdf uploaded");
-          });
-        reset();
+        const res2 = axios.put(res.data.pdfUrl, data.pdf[0], {
+          headers: {
+            "Content-Type": "application/pdf",
+          },
+        });
+        if (res1.status === 200 && res2.status === 200) {
+          reset();
+          navigate("/admin/upcoming-trips");
+        }
       });
-
-      alert("Trip added successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -116,7 +110,9 @@ const UpcomingTrip = () => {
           </div>
           <div className="flex gap-6 mb-6">
             <div className="w-full">
-              <label className="block text-gray-700 font-semibold mb-2">Start Date:</label>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Start Date:
+              </label>
               <input
                 type="date"
                 {...register("startDate", {
@@ -132,14 +128,18 @@ const UpcomingTrip = () => {
             </div>
 
             <div className="w-full">
-              <label className="block text-gray-700 font-semibold mb-2">End Date:</label>
+              <label className="block text-gray-700 font-semibold mb-2">
+                End Date:
+              </label>
               <input
                 type="date"
                 {...register("endDate", { required: "End Date is required" })}
                 className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#3D8D7A] transition duration-200"
               />
               {errors.endDate && (
-                <p className="text-red-500 text-sm mt-1">{errors.endDate.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.endDate.message}
+                </p>
               )}
             </div>
           </div>
@@ -202,4 +202,4 @@ const UpcomingTrip = () => {
   );
 };
 
-export default UpcomingTrip;
+export default AddUpcomingTrip;

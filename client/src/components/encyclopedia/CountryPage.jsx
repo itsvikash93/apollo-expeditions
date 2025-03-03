@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "../../utils/axios";
 import { FaArrowRightLong } from "react-icons/fa6";
-import Nav from "../navbar/Nav"
-import Footer from "../footer/Footer"
+import Nav from "../navbar/Nav";
+import Footer from "../footer/Footer";
 
 const CountryPage = () => {
   const { countrySlug } = useParams();
@@ -16,9 +16,7 @@ const CountryPage = () => {
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
-        const response = await axios.get(
-          `/countries/${countrySlug}`
-        );
+        const response = await axios.get(`/countries/${countrySlug}`);
         // console.log(response.data);
         setCountry(response.data);
         setPlaces(response.data.popularPlaces);
@@ -51,7 +49,7 @@ const CountryPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg_Third">
+    <div className="min-h-screen bg_Third flex flex-col">
       <Nav className="absolute" />
       <div className="container mx-auto px-4 py-12 mt-16">
         <div className="text-center mb-12">
@@ -59,7 +57,9 @@ const CountryPage = () => {
             Discover {country.name}
           </h1>
           <p className="text-lg max-w-2xl mx-auto">
-            {country.description}
+            Explore the most popular destinations and hidden gems in{" "}
+            {country.name}
+            {/* //dynamiccccccccccccccc */}
           </p>
         </div>
 
@@ -72,7 +72,7 @@ const CountryPage = () => {
               >
                 <div className="relative">
                   <img
-                    src={place.imageUrl}
+                    src={place.image}
                     alt={place.name}
                     className="w-full h-64 object-cover"
                   />
@@ -84,20 +84,32 @@ const CountryPage = () => {
                   <p className="text-gray-600 mb-6 line-clamp-3">
                     {place.description}
                   </p>
-                  <Link to={place.pdfUrl} target="_blank" className="w-full bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center gap-2">
+                  <button className="w-full bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center gap-2">
                     Explore More
                     <FaArrowRightLong className=" mt-[3px]" />
-                  </Link>
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         ) : (
           <div className="text-center First mt-8 p-8 bg-white rounded-lg shadow-md">
-            <svg className="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4M12 20V4" />
+            <svg
+              className="w-16 h-16 mx-auto mb-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M20 12H4M12 20V4"
+              />
             </svg>
-            <p className="text-xl font-medium">No popular places available for {country.name}</p>
+            <p className="text-xl font-medium">
+              No popular places available for {country.name}
+            </p>
             <p className="mt-2">Please check back later for updates.</p>
           </div>
         )}

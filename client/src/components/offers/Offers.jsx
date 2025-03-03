@@ -14,10 +14,8 @@ const Offers = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await axios.get(
-          `/offers/${offerSlug}`
-        );
-        console.log(response.data);
+        const response = await axios.get(`/offers/${offerSlug}`);
+        // console.log(response);
         setPackages(response.data.packages);
         setLoading(false);
       } catch (err) {
@@ -48,7 +46,7 @@ const Offers = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg_Third ">
+    <div className="w-full min-h-screen bg_Third flex flex-col">
       <Nav className="absolute" />
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 sm:mt-24">
         <h1 className="text-3xl sm:text-3xl lg:text-5xl tracking-wide custom-font1 mb-6 sm:mb-8 lg:mb-12 text-center">
@@ -102,7 +100,6 @@ const Offers = () => {
 
                   <Link
                     to={pkg.pdfUrl}
-                    target="_blank"
                     className="inline-flex mb-3 items-center justify-center w-full bg-black text-white py-3 px-4 rounded-lg hover:bg-opacity-80 transition duration-200 font-medium"
                   >
                     <HiOutlineDocumentDownload className="mr-1 text-2xl" />
@@ -113,7 +110,7 @@ const Offers = () => {
                     to={`/contact`}
                     className="inline-flex items-center justify-center w-full bg-black text-white py-3 px-4 rounded-lg hover:bg-opacity-80 transition duration-200 font-medium"
                   >
-                    Contact Us
+                    Enquire
                   </Link>
                 </div>
               </div>

@@ -19,14 +19,14 @@ const Experinces = () => {
   ];
 
   return (
-    <section className="py-10 bg_Third">
+    <section className="py-10 bg_Third flex flex-col">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h3 className="mt-2 text-5xl leading-8 custom-font1 tracking-wide  sm:text-4xl">
             Traveler's Experiences
           </h3>
         </div>
-       
+
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
@@ -58,6 +58,7 @@ const Experinces = () => {
           ))}
         </Swiper>
       </div>
+      <hr className="w-[90%] self-center mt-10 border-1 border-zinc-300" />
     </section>
   );
 };

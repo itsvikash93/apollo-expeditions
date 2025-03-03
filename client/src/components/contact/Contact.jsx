@@ -6,18 +6,22 @@ import Nav from "../navbar/Nav";
 
 const Contact = () => {
   return (
-    <div className="">
+    <div className="flex flex-col">
       <Nav className="absolute" />
 
       <div className="mt-24 h-full min-h-96 flex flex-col">
         {/* Header */}
-        <h1 className=" text-center text-5xl tracking-wide custom-font1">Contact Us</h1>
+        <h1 className=" text-center text-5xl tracking-wide custom-font1">
+          Contact Us
+        </h1>
 
         {/* Main Container */}
         <div className="flex h-[60vh] mt-5 px-8">
           {/* Left Section: Contact Details */}
           <div className="w-1/2 p-6 pl-20 mt-10 ml-36 rounded-lg bg_Third text-First ">
-            <h2 className="text-3xl font-semibold text-gray-500">Get in Touch</h2>
+            <h2 className="text-3xl font-semibold text-gray-500">
+              Get in Touch
+            </h2>
 
             <div className="mt-4 flex flex-col gap-2 font-semibold">
               <p className="text-2xl">Jeevraj Sharma</p>
@@ -62,10 +66,7 @@ const Contact = () => {
           <div className="w-1/2 p-8 px-28 rounded-lg bg_Third ">
             <form className="p-4">
               <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium"
-                >
+                <label htmlFor="name" className="block text-sm font-medium">
                   Name
                 </label>
                 <input
@@ -94,10 +95,7 @@ const Contact = () => {
               </div>
 
               <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium"
-                >
+                <label htmlFor="email" className="block text-sm font-medium">
                   Email
                 </label>
                 <input
@@ -110,10 +108,7 @@ const Contact = () => {
               </div>
 
               <div className="mb-4">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium"
-                >
+                <label htmlFor="message" className="block text-sm font-medium">
                   Message
                 </label>
                 <textarea
