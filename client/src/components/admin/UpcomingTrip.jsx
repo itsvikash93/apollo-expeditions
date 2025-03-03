@@ -1,0 +1,205 @@
+import { useForm } from "react-hook-form";
+import axios from "../../utils/axios";
+import { useState } from "react";
+import SideNav from "./SideNav";
+
+const UpcomingTrip = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  // Function to format the date range
+  const formatDate = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+
+    const startMonth = start.toLocaleString("en-US", { month: "short" });
+    const endMonth = end.toLocaleString("en-US", { month: "short" });
+
+    const startYear = start.getFullYear();
+    const endYear = end.getFullYear();
+
+    if (startYear === endYear) {
+      if (startMonth === endMonth) {
+        return `${startDay}-${endDay} ${startMonth} ${startYear}`;
+      } else {
+        return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${startYear}`;
+      }
+    } else {
+      return `${startDay} ${startMonth} ${startYear} - ${endDay} ${endMonth} ${endYear}`;
+    }
+  };
+
+  const handleFormSubmit = async (data) => {
+    try {
+      const formattedDate = formatDate(data.startDate, data.endDate); // Format date range
+
+      const formData = {
+        title: data.title,
+        location: data.location,
+        description: data.description,
+        date: formattedDate,
+        image: data.image[0].name,
+        pdf: data.pdf[0].name,
+      };
+
+      console.log(formData);
+
+      axios.post("/admin/upcoming-trips", formData).then((res) => {
+        axios
+          .put(res.data.imageUrl, data.image[0], {
+            headers: {
+              "Content-Type": "image/jpeg",
+            },
+          })
+          .then((res) => {
+            console.log("image uploaded");
+          });
+
+        axios
+          .put(res.data.pdfUrl, data.pdf[0], {
+            headers: {
+              "Content-Type": "application/pdf",
+            },
+          })
+          .then((res) => {
+            console.log("pdf uploaded");
+          });
+        reset();
+      });
+
+      alert("Trip added successfully!");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
+  return (
+    <div className="bg-gray-100 w-full h-screen flex ">
+      <SideNav />
+      <div className="container h-full w-[80%] mx-auto py-8 px-4 overflow-y-auto">
+        <h2 className="text-3xl font-semibold mb-6">Add Upcoming Trip</h2>
+        <form
+          onSubmit={handleSubmit(handleFormSubmit)}
+          className="bg-white shadow-md rounded-lg p-6"
+        >
+          <div className="mb-4">
+            <label className="block font-medium">Title:</label>
+            <input
+              type="text"
+              {...register("title", { required: "Title is required" })}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              placeholder="Enter trip title"
+            />
+            {errors.title && (
+              <p className="text-red-500 text-sm">{errors.title.message}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label className="block font-medium">Location:</label>
+            <input
+              type="text"
+              {...register("location", { required: "Location is required" })}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              placeholder="Enter trip location"
+            />
+            {errors.location && (
+              <p className="text-red-500 text-sm">{errors.location.message}</p>
+            )}
+          </div>
+          <div className="flex gap-6 mb-6">
+            <div className="w-full">
+              <label className="block text-gray-700 font-semibold mb-2">Start Date:</label>
+              <input
+                type="date"
+                {...register("startDate", {
+                  required: "Start Date is required",
+                })}
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#3D8D7A] transition duration-200"
+              />
+              {errors.startDate && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.startDate.message}
+                </p>
+              )}
+            </div>
+
+            <div className="w-full">
+              <label className="block text-gray-700 font-semibold mb-2">End Date:</label>
+              <input
+                type="date"
+                {...register("endDate", { required: "End Date is required" })}
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#3D8D7A] transition duration-200"
+              />
+              {errors.endDate && (
+                <p className="text-red-500 text-sm mt-1">{errors.endDate.message}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <label className="block font-medium">Description:</label>
+            <textarea
+              {...register("description", {
+                required: "Description is required",
+              })}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              placeholder="Enter trip description"
+            ></textarea>
+            {errors.description && (
+              <p className="text-red-500 text-sm">
+                {errors.description.message}
+              </p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label className="block font-medium">Image:</label>
+            <input
+              type="file"
+              accept="image/*"
+              {...register("image", { required: "Image is required" })}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              onChange={(e) =>
+                setImagePreview(URL.createObjectURL(e.target.files[0]))
+              }
+            />
+            {errors.image && (
+              <p className="text-red-500 text-sm">{errors.image.message}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label className="block font-medium">PDF File:</label>
+            <input
+              type="file"
+              accept="application/pdf"
+              {...register("pdf", { required: "PDF is required" })}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              onChange={(e) => setPdfName(e.target.files[0]?.name)}
+            />
+            {errors.pdf && (
+              <p className="text-red-500 text-sm">{errors.pdf.message}</p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="bg-[#3D8D7A] text-white py-2 px-4 rounded"
+          >
+            Add Trip
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default UpcomingTrip;

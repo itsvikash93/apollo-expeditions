@@ -9,15 +9,22 @@ const popularPlaceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
+  imageKey: {
     type: String,
     required: true,
   },
-  rating: {
-    type: Number,
-    min: 1,
-    max: 5,
+  pdfKey: {
+    type: String,
     required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  pdfUrl: {
+    type: String,
+    required: true,
+    trim: true,
   },
   country: {
     type: mongoose.Schema.Types.ObjectId,

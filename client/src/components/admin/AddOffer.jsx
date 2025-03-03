@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import SideNav from "./SideNav";
 
 const AddOffer = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const handleFormSubmit = (data) => {
     try {
-      axios.post("/api/admin/offers", data).then((res) => {
+      axios.post("/admin/offers", data).then((res) => {
         // console.log(res.data);
         console.log("offer added");
         reset();
@@ -28,22 +28,25 @@ const AddOffer = () => {
           className="bg-white shadow-md rounded-lg p-6"
         >
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700">
+            <label htmlFor="name" className="block font-medium text-gray-700">
               Offer Name
             </label>
             <input
               type="text"
-              {...register("name")}
+              {...register("name", { required: "Offer name is required" })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
               placeholder="Enter offer name"
-              required
+              // required
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            )}
           </div>
 
           <input
             type="submit"
             value="Add Offer"
-            className="bg-[#3D8D7A] text-white py-2 px-4 rounded"
+            className="bg-[#3D8D7A] cursor-pointer text-white py-2 px-4 rounded"
           />
         </form>
       </div>

@@ -1,6 +1,12 @@
 const express = require("express");
 const countryModel = require("../models/country.model");
 const router = express.Router();
+const {
+  getCountries,
+  getCountryBySlug,
+  addCountry,
+  deleteCountry,
+} = require("../controllers/country.controller");
 
 // Get all countries
 router.get("/", async (req, res) => {

@@ -13,34 +13,56 @@ const SideNav = () => {
           Dashboard
         </Link>
         <Link
-          to="/admin/offers/add"
+          to="/admin/offers"
           className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
         >
-          Add Offers
+          Offers & Packages
+        </Link>
+
+        <Link
+          to="/admin/experiences"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Traveller Experiences
+        </Link>
+
+        <Link
+          to="/admin/partners"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Partners
+        </Link>
+
+        <Link
+          to="/admin/upcoming-trips"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Upcoming Trips
+        </Link>
+
+        <Link
+          to="/admin/packages"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Packages
         </Link>
         <Link
-          to="/admin/packages/add"
+          to="/admin/countries"
           className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
         >
-          Add Packages
+          Countries
         </Link>
         <Link
-          to="/admin/countries/add"
+          to="/admin/popular-places"
           className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
         >
-          Add Countries
+          Popular Places
         </Link>
         <Link
-          to="/admin/popular-places/add"
+          to="/admin/vlogs"
           className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
         >
-          Add Popular Places
-        </Link>
-        <Link
-          to="/admin/vlogs/add"
-          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
-        >
-          Add Vlogs
+          Vlogs
         </Link>
         <Link
           to="/admin/enquiries"

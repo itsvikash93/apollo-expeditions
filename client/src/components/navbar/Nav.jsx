@@ -19,8 +19,8 @@ const Nav = () => {
     const fetchData = async () => {
       try {
         const [countriesRes, offersRes] = await Promise.all([
-          axios.get(`/api/countries`),
-          axios.get(`/api/offers`),
+          axios.get(`/countries`),
+          axios.get(`/offers`),
         ]);
 
         setCountries(countriesRes.data);

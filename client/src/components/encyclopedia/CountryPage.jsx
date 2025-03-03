@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "../../utils/axios";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Nav from "../navbar/Nav"
@@ -17,7 +17,7 @@ const CountryPage = () => {
     const fetchPlaces = async () => {
       try {
         const response = await axios.get(
-          `/api/countries/${countrySlug}`
+          `/countries/${countrySlug}`
         );
         // console.log(response.data);
         setCountry(response.data);
@@ -59,8 +59,7 @@ const CountryPage = () => {
             Discover {country.name}
           </h1>
           <p className="text-lg max-w-2xl mx-auto">
-            Explore the most popular destinations and hidden gems in {country.name}
-            {/* //dynamiccccccccccccccc */}
+            {country.description}
           </p>
         </div>
 
@@ -73,7 +72,7 @@ const CountryPage = () => {
               >
                 <div className="relative">
                   <img
-                    src={place.image}
+                    src={place.imageUrl}
                     alt={place.name}
                     className="w-full h-64 object-cover"
                   />
@@ -85,10 +84,10 @@ const CountryPage = () => {
                   <p className="text-gray-600 mb-6 line-clamp-3">
                     {place.description}
                   </p>
-                  <button className="w-full bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center gap-2">
+                  <Link to={place.pdfUrl} target="_blank" className="w-full bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center gap-2">
                     Explore More
                     <FaArrowRightLong className=" mt-[3px]" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

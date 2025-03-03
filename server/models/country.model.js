@@ -3,6 +3,7 @@ const slugify = require("slugify");
 
 const countrySchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
+  description: { type: String, required: true },
   slug: {
     type: String,
     unique: true,

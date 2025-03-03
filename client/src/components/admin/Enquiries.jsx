@@ -8,7 +8,7 @@ const Enquiries = () => {
 
   const getEnquiries = () => {
     try {
-      axios.get("/api/admin/enquiries").then((res) => {
+      axios.get("/admin/enquiries").then((res) => {
         setEnquiries(res.data);
       });
       // console.log(enquiries);

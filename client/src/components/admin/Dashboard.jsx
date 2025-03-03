@@ -9,7 +9,7 @@ const Dashboard = () => {
 
       <div className="container mx-auto pt-12 px-4 w-[80%] h-full">
         <h2 className="text-3xl font-semibold mb-6">
-          Welcome to Admin Dashboard
+          Welcome to the Admin Dashboard
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

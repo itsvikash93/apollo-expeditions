@@ -1,23 +1,20 @@
 const mongoose = require("mongoose");
 
-// Define the Place schema
-const packageSchema = new mongoose.Schema({
-  name: {
+const upcomingTripSchema = new mongoose.Schema({
+  title: {
     type: String,
     required: true,
     trim: true,
   },
-  offersAndPackages: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Offer",
+  location: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
     required: true,
   },
   description: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  imageKey: {
     type: String,
     required: true,
     trim: true,
@@ -27,7 +24,7 @@ const packageSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  pdfKey: {
+  imageKey: {
     type: String,
     required: true,
     trim: true,
@@ -37,6 +34,11 @@ const packageSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  pdfKey: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
-module.exports = mongoose.model("Package", packageSchema);
+module.exports = mongoose.model("UpcomingTrip", upcomingTripSchema);

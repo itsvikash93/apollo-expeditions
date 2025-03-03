@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import SideNav from "./SideNav";
 import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
 const AddPackage = () => {
+  const navigate = useNavigate();
   const [offers, setOffers] = useState([]);
   const getOffers = () => {
-    axios.get("/api/offers").then((res) => {
+    axios.get("/offers").then((res) => {
       setOffers(res.data);
     });
   };
@@ -15,7 +16,12 @@ const AddPackage = () => {
     getOffers();
   }, []);
 
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const handleFormSubmit = (data) => {
     try {
       const formData = {
@@ -23,26 +29,23 @@ const AddPackage = () => {
         image: data.image[0].name,
         pdf: data.pdf[0].name,
       };
-      axios.post("/api/admin/packages", formData).then((res) => {
-        axios
-          .put(res.data.imageUrl, data.image[0], {
-            headers: {
-              "Content-Type": "image/jpeg",
-            },
-          })
-          .then((res) => {
-            console.log("image uploaded");
-          });
-        axios
-          .put(res.data.pdfUrl, data.pdf[0], {
-            headers: {
-              "Content-Type": "application/pdf",
-            },
-          })
-          .then((res) => {
-            console.log("pdf uploaded");
-          });
-        reset();
+      axios.post("/admin/packages", formData).then(async (res) => {
+        const res1 = await axios.put(res.data.imageUrl, data.image[0], {
+          headers: {
+            "Content-Type": "image/jpeg",
+          },
+        });
+
+        const res2 = await axios.put(res.data.pdfUrl, data.pdf[0], {
+          headers: {
+            "Content-Type": "application/pdf",
+          },
+        });
+
+        if (res1.status === 200 && res2.status === 200) {
+          reset();
+          navigate("/admin/packages");
+        }
       });
     } catch (error) {
       console.error("Error adding place:", error);
@@ -51,7 +54,7 @@ const AddPackage = () => {
   return (
     <div id="main" className="bg-gray-100 w-full h-screen flex ">
       <SideNav />
-      <div className="container h-full w-[80%] mx-auto py-8 px-4">
+      <div className="container h-full w-[80%] mx-auto py-8 px-4 overflow-y-auto">
         <h2 className="text-3xl font-semibold mb-6">Add New Package</h2>
 
         <form
@@ -59,26 +62,27 @@ const AddPackage = () => {
           className="bg-white shadow-md rounded-lg p-6"
         >
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700">
+            <label htmlFor="name" className="block font-medium text-gray-700">
               Package Name
             </label>
             <input
               type="text"
-              {...register("name")}
+              {...register("name", { required: "Package name is required" })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
               placeholder="Enter package name"
-              required
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            )}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="offer" className="block text-gray-700">
+            <label htmlFor="offer" className="block font-medium text-gray-700">
               Offer and Package
             </label>
             <select
-              {...register("offer")}
+              {...register("offer", { required: "Offer is required" })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
-              required
             >
               <option value="" disabled selected>
                 Select Offer and Package
@@ -89,50 +93,66 @@ const AddPackage = () => {
                 </option>
               ))}
             </select>
+            {errors.offer && (
+              <p className="text-red-500 text-sm">{errors.offer.message}</p>
+            )}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="description" className="block text-gray-700">
+            <label
+              htmlFor="description"
+              className="block font-medium text-gray-700"
+            >
               Description
             </label>
             <textarea
-              {...register("description")}
+              {...register("description", {
+                required: "Description is required",
+              })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
               rows="4"
               placeholder="Enter a brief description of the package"
-              required
             ></textarea>
+            {errors.description && (
+              <p className="text-red-500 text-sm">
+                {errors.description.message}
+              </p>
+            )}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="image" className="block text-gray-700">
+            <label htmlFor="image" className="block font-medium text-gray-700">
               Image
             </label>
             <input
               type="file"
-              {...register("image")}
+              {...register("image", { required: "Image is required" })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
               accept="image/*"
-              required
             />
+            {errors.image && (
+              <p className="text-red-500 text-sm">{errors.image.message}</p>
+            )}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="pdf" className="block text-gray-700">
+            <label htmlFor="pdf" className="block font-medium text-gray-700">
               PDF
             </label>
             <input
               type="file"
-              {...register("pdf")}
+              {...register("pdf", { required: "PDF is required" })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
               accept="application/pdf"
-              required
             />
+            {errors.pdf && (
+              <p className="text-red-500 text-sm">{errors.pdf.message}</p>
+            )}
           </div>
 
           <button
             type="submit"
-            className="bg-[#3D8D7A] text-white py-2 px-4 rounded "
+            className="bg-[#3D8D7A] cursor-pointer text-white py-2 px-4 rounded "
           >
             Add Package
           </button>

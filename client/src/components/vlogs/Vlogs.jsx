@@ -11,7 +11,7 @@ const Vlogs = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get("/api/vlogs");
+        const response = await axios.get("/vlogs");
         setVideos(response.data);
       } catch (err) {
         setError("Failed to load vlogs. Please try again later.");
@@ -25,7 +25,6 @@ const Vlogs = () => {
 
 
   return (
-
     <div className="w-full min-h-screen bg_Third ">
       <Nav className="absolute" />
       <div className="w-full min-h-screen bg_Third px-4 sm:px-6 lg:px-8 py-8 mt-16 sm:mt-20 lg:mt-24">

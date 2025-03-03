@@ -15,9 +15,9 @@ const Offers = () => {
     const fetchPackages = async () => {
       try {
         const response = await axios.get(
-          `/api/offers/${offerSlug}`
+          `/offers/${offerSlug}`
         );
-        // console.log(response);
+        console.log(response.data);
         setPackages(response.data.packages);
         setLoading(false);
       } catch (err) {
@@ -70,7 +70,9 @@ const Offers = () => {
                 d="M20 12H4M12 20V4"
               />
             </svg>
-            <p className="text-xl font-medium">No packages available at this time.</p>
+            <p className="text-xl font-medium">
+              No packages available at this time.
+            </p>
             <p className="mt-2">Please check back later for new offerings.</p>
           </div>
         ) : (
@@ -91,11 +93,16 @@ const Offers = () => {
                 </div>
 
                 <div className="p-6">
-                  <h2 className="text-2xl custom-font1 tracking-wider mb-3">{pkg.name}</h2>
-                  <p className="text-gray-600 mb-6 line-clamp-3">{pkg.description}</p>
+                  <h2 className="text-2xl custom-font1 tracking-wider mb-3">
+                    {pkg.name}
+                  </h2>
+                  <p className="text-gray-600 mb-6 line-clamp-3">
+                    {pkg.description}
+                  </p>
 
                   <Link
                     to={pkg.pdfUrl}
+                    target="_blank"
                     className="inline-flex mb-3 items-center justify-center w-full bg-black text-white py-3 px-4 rounded-lg hover:bg-opacity-80 transition duration-200 font-medium"
                   >
                     <HiOutlineDocumentDownload className="mr-1 text-2xl" />

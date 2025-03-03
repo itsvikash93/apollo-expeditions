@@ -1,17 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const popularPlaceModel = require("../models/popular-place.model");
+const {
+  getPopularPlaces,
+  getPopularPlacesByCountryId,
+} = require("../controllers/popular-place.controller");
 
-router.get("/", async (req, res) => {
-  const popularPlaces = await popularPlaceModel.find();
-  res.status(200).send(popularPlaces);
-});
-
-router.get("/:countryId", async (req, res) => {
-  const popularPlaces = await popularPlaceModel.find({
-    country: req.params.countryId,
-  });
-  res.status(200).send(popularPlaces);
-});
+router.get("/", getPopularPlaces);
+router.get("/:countryId", getPopularPlacesByCountryId);
 
 module.exports = router;
