@@ -5,19 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination } from "swiper/modules";
 
-// Demo photos from Unsplash
-const Ex1 =
-  "https://media.istockphoto.com/id/1455552376/photo/brihadishwara-temple-tanjore.jpg?s=1024x1024&w=is&k=20&c=u0JJKnXIYEIbRfPQaE1EfHdq7StSWfikCoCy3QawWIs=";
-
-const Experinces = () => {
-  const testimonials = [
-    { image: Ex1 },
-    { image: Ex1 },
-    { image: Ex1 },
-    { image: Ex1 },
-    { image: Ex1 },
-  ];
-
+const Experinces = ({ experiences }) => {
   return (
     <section className="py-10 bg_Third flex flex-col">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +28,7 @@ const Experinces = () => {
           }}
           modules={[Pagination, Autoplay]}
         >
-          {testimonials.map((testimonial, index) => (
+          {experiences.map((experience, index) => (
             <SwiperSlide
               key={index}
               className={`swiper-slide ${
@@ -48,7 +36,7 @@ const Experinces = () => {
               }`}
             >
               <img
-                src={testimonial.image}
+                src={experience.imageUrl}
                 alt={`Experience ${index + 1}`}
                 className={`w-full h-auto rounded-md object-cover ${
                   index === 1 ? "swiper-slide-center" : ""

@@ -16,14 +16,14 @@ const Contact = () => {
         </h1>
 
         {/* Main Container */}
-        <div className="flex h-[60vh] mt-5 px-8">
+        <div className="flex gap-40 mt-10 ml-20 justify-center">
           {/* Left Section: Contact Details */}
-          <div className="w-1/2 p-6 pl-20 mt-10 ml-36 rounded-lg bg_Third text-First ">
-            <h2 className="text-3xl font-semibold text-gray-500">
+          <div className="w-fit bg-[#edead3] rounded-xl text-First shadow-xl p-10 ">
+            <h2 className="text-3xl font-semibold  text-gray-500">
               Get in Touch
             </h2>
 
-            <div className="mt-4 flex flex-col gap-2 font-semibold">
+            <div className="mt-4 flex flex-col gap-4 font-semibold">
               <p className="text-2xl">Jeevraj Sharma</p>
               <p className="text-md "> Founder & Manager</p>
 
@@ -49,7 +49,7 @@ const Contact = () => {
                 <p>Jaipur, Rajasthan (IN) | Dehradun, Uttarakhand (IN)</p>
               </div>
 
-              <div className="mt-4 flex items-center">
+              <div className="mt-4  flex items-center">
                 <img
                   src={qr}
                   alt="QR Code"
@@ -63,7 +63,7 @@ const Contact = () => {
           </div>
 
           {/* Right Section: Contact Form */}
-          <div className="w-1/2 p-8 px-28 rounded-lg bg_Third ">
+          <div className="w-[30vw] bg-[#edead3] shadow-xl p-10 rounded-xl">
             <form className="p-4">
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium">
@@ -122,7 +122,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full inline-flex justify-center rounded-md font-semibold text-white bg-gray-600 py-2 px-4 text-sm  transition"
+                className="w-full inline-flex justify-center rounded-md font-semibold text-white bg-black py-2 px-4 text-sm  transition"
               >
                 Submit
               </button>
@@ -131,11 +131,10 @@ const Contact = () => {
         </div>
 
         {/* Google Map Section */}
-        <div className="h-80 w-full p-5 flex justify-center">
+        <div className="h-80 mx-20 my-10 rounded-xl overflow-hidden flex justify-center relative">
           <iframe
-            className="w-[80%] h-48 rounded-lg shadow-lg bg_Third"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1779.0912000170235!2d75.77204642392776!3d26.89770575847155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db4664a38ea91%3A0x26446774d817f6!2sShayam%20Nagar!5e0!3m2!1sen!2sin!4v1740378852424!5m2!1sen!2sin"
-            allowFullScreen
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110204.75443551115!2d77.93473335243701!3d30.325402625777514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929c356c888af%3A0x4c3562c032518799!2sDehradun%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1741098124598!5m2!1sen!2sin"
+            className="w-full h-full"
             loading="lazy"
           ></iframe>
         </div>

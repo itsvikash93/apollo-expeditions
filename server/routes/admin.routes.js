@@ -19,10 +19,12 @@ const {
   deleteExperience,
   addPartner,
   deletePartner,
+  deleteEnquiry,
 } = require("../controllers/admin.controller");
 
 router.get("/enquiries", getEnquiries);
 router.get("/enquiries/:id", getEnquiryById);
+router.delete("/enquiries/:id", deleteEnquiry);
 router.post("/offers", addOffer);
 router.delete("/offers/:id", deleteOffer);
 router.post("/packages", addPackage);

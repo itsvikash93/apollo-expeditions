@@ -14,7 +14,7 @@ const popularPlaceRoutes = require("./routes/popular-place.routes");
 const partnerRoutes = require("./routes/partner.routes");
 const experienceRoutes = require("./routes/experience.routes");
 const upcomingTripRoutes = require("./routes/upcoming-trip.routes");
-const tripEnquiryRoutes = require("./routes/trip-enquiry.routes");
+const enquiryRoutes = require("./routes/enquiry.routes");
 connectToDB();
 app.use(cors());
 
@@ -34,6 +34,6 @@ app.use("/api/bookings", bookingRoutes);
 app.use("/api/partners", partnerRoutes);
 app.use("/api/experiences", experienceRoutes);
 app.use("/api/upcoming-trips", upcomingTripRoutes);
-app.use("/api/trip-enquiry", tripEnquiryRoutes);
+app.use("/api/enquiries", enquiryRoutes);
 
 app.listen(process.env.PORT || 3000);

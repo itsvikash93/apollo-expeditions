@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -32,10 +32,9 @@ const Nav = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = "http://localhost:3000";
         const [countriesRes, offersRes] = await Promise.all([
-          axios.get(`${apiUrl}/api/countries`),
-          axios.get(`${apiUrl}/api/offers`),
+          axios.get(`/countries`),
+          axios.get(`/offers`),
         ]);
 
         setCountries(countriesRes.data);
@@ -63,7 +62,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="bg-white/40 self-center backdrop-blur-lg border border-white/60 shadow-lg rounded-full top-2 absolute w-[95%] z-50">
+    <nav className=" self-center bg-[#edead3] shadow-lg rounded-full top-2 absolute w-[95%] z-50">
       <div className="max-w-10xl mx-auto px-0 sm:px-6">
         <div className="flex justify-between items-center h-12">
           <Link to="/" onClick={() => handleNavigation("/")}>
@@ -83,7 +82,7 @@ const Nav = () => {
           </button>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex text-md font-semibold justify-between gap-6 px-6">
+          <div className="hidden md:flex text-md font-semibold justify-between gap-8 px-6 h-full pt-3">
             <Link to="/" className="hover:text-gray-500">
               Home
             </Link>
@@ -105,14 +104,14 @@ const Nav = () => {
                     animate="visible"
                     exit="exit"
                     variants={dropdownVariants}
-                    className="absolute bg_Third shadow-md -translate-x-15 rounded-md left-0 w-64 overflow-hidden"
+                    className="absolute bg_Third shadow-md mt-3 -translate-x-15 rounded-b-md left-0 w-64 overflow-hidden"
                   >
                     {offers.length > 0 ? (
                       offers.map((offer) => (
                         <Link
                           key={offer._id}
                           to={`/offers/${offer.slug}`}
-                          className="block px-4 py-2 text-center hover:text-gray-500"
+                          className="block px-2 py-2 text-center hover:text-gray-500"
                           onClick={() =>
                             handleNavigation(`/offers/${offer.slug}`)
                           }
@@ -148,7 +147,7 @@ const Nav = () => {
                     animate="visible"
                     exit="exit"
                     variants={dropdownVariants}
-                    className="absolute bg_Third shadow-md -translate-x-10 rounded-md w-52 left-0 overflow-hidden"
+                    className="absolute bg_Third shadow-md mt-3 -translate-x-8 rounded-b-md w-44 left-0 overflow-hidden"
                   >
                     {countries.length > 0 ? (
                       countries.map((country) => (

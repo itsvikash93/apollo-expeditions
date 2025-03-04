@@ -11,6 +11,8 @@ import EnquiryForm from "./EnquiryForm"; // Import Modal
 
 const Home = () => {
   const [upcomingTrips, setUpcomingTrips] = useState([]);
+  const [partners, setPartners] = useState([]);
+  const [experiences, setExperiences] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedTrip, setSelectedTrip] = useState(null);
 
@@ -18,6 +20,13 @@ const Home = () => {
     axios.get("/upcoming-trips").then((res) => {
       setUpcomingTrips(res.data);
       setLoading(false);
+    });
+    axios.get("/partners").then((res) => {
+      setPartners(res.data);
+    });
+    axios.get("/experiences").then((res) => {
+      console.log(res.data);
+      setExperiences(res.data);
     });
   }, []);
 
@@ -46,8 +55,8 @@ const Home = () => {
         <hr className="w-[90%] self-center mt-10 border-1 border-zinc-300" />
       </div>
 
-      <Experinces />
-      <Associations />
+      <Experinces experiences={experiences} />
+      <Associations partners={partners} />
       <Footer />
 
       {selectedTrip && (

@@ -9,19 +9,36 @@ const upcomingTripModel = require("../models/upcoming-trip.model");
 const experienceModel = require("../models/experience.model");
 const partnerModel = require("../models/partner.model");
 const { default: slugify } = require("slugify");
+const tripEnquiryModel = require("../models/trip-enquiry.model");
+const packageEnquiryModel = require("../models/package-enquiry.model");
 
 require("dotenv").config();
 
 module.exports.getEnquiries = async (req, res) => {
   try {
-    const enquiries = await enquiryModel
-      .find()
-      .populate("state", "name") // Populate state name
-      .populate("place", "name"); // Populate place name
-
-    res.status(200).send(enquiries);
+    const tripEnquiries = await tripEnquiryModel.find();
+    const packageEnquiries = await packageEnquiryModel.find();
+    console.log(tripEnquiries, packageEnquiries);
+    res.status(200).json({
+      tripEnquiries: tripEnquiries,
+      packageEnquiries: packageEnquiries,
+    });
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports.deleteEnquiry = async (req, res) => {
+  try {
+    if (req.body.type === "trip") {
+      await tripEnquiryModel.findByIdAndDelete(req.params.id);
+    }
+    if (req.body.type === "package") {
+      await packageEnquiryModel.findByIdAndDelete(req.params.id);
+    }
+    res.status(200).send({ message: "Enquiry deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 

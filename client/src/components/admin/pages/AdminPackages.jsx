@@ -33,12 +33,14 @@ const AdminPackages = () => {
   return (
     <div id="main" className="bg-gray-100 w-full h-screen flex">
       <SideNav />
-      <div className="container h-full w-[80%] mx-auto py-8 px-4 overflow-y-auto">
+      <div className="container h-full w-full sm:w-[80%] mx-auto py-8 px-4 overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-800">Packages</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-black">
+            Packages
+          </h1>
           <Link
             to="/admin/packages/add"
-            className="bg-[#3D8D7A] text-white px-4 py-2 rounded-md"
+            className="bg-[#3D8D7A] text-sm sm:text-base text-white px-4 py-2 rounded-md"
           >
             Add Package
           </Link>
@@ -57,7 +59,7 @@ const AdminPackages = () => {
               ) : (
                 Object.keys(groupedPackages).map((offer) => (
                   <div key={offer} className="w-full">
-                    <h2 className="text-2xl font-bold text-gray-700 mt-6">
+                    <h2 className="text-xl sm:text-2xl font-bold text-black mt-6">
                       {offer}
                     </h2>
                     <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -66,10 +68,10 @@ const AdminPackages = () => {
                           key={pkg._id}
                           className="px-4 py-3 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-102"
                         >
-                          <h3 className="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors">
+                          <h3 className="text-xl sm:text-2xl font-semibold text-black hover:text-blue-600 transition-colors">
                             {pkg.name}
                           </h3>
-                          <p className="text-md text-gray-700 mt-2">
+                          <p className="text-md text-black mt-2">
                             {pkg.description}
                           </p>
                           <div className="flex gap-4 mt-4">

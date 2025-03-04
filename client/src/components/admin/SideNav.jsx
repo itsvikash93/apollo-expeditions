@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SideNav = () => {
   return (
-    <nav className="bg-[#A3D1C6] text-[#00000]  px-4 pt-10 w-[20%] h-full">
+    <nav className="bg-[#A3D1C6] text-[#00000] px-4 pt-10 hidden sm:block sm:w-[20%] h-full">
       <h1 className=" text-3xl font-bold">Admin Dashboard</h1>
       <div className="text-xl mt-5">
         <Link

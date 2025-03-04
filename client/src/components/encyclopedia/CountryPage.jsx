@@ -17,7 +17,7 @@ const CountryPage = () => {
     const fetchPlaces = async () => {
       try {
         const response = await axios.get(`/countries/${countrySlug}`);
-        // console.log(response.data);
+        console.log(response.data);
         setCountry(response.data);
         setPlaces(response.data.popularPlaces);
         setLoading(false);

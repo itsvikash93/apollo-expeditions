@@ -22,14 +22,14 @@ const AdminExperiences = () => {
   return (
     <div id="main" className="bg-gray-100 w-full h-screen flex ">
       <SideNav />
-      <div className="container h-full w-[80%] mx-auto py-8 px-4 overflow-y-auto">
+      <div className="container h-full w-full sm:w-[80%] mx-auto py-8 px-4 overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-800">
+          <h1 className="text-2xl sm:text-3xl font-bold text-black">
             Traveller Experiences
           </h1>
           <Link
             to="/admin/experiences/add"
-            className="bg-[#3D8D7A] text-white px-4 py-2 rounded-md"
+            className="bg-[#3D8D7A] text-sm sm:text-base text-white px-4 py-2 rounded-md"
           >
             Add Experience
           </Link>

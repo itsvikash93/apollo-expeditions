@@ -24,8 +24,10 @@ const AddCountry = () => {
     <div id="main" className="bg-gray-100 w-full h-screen flex ">
       <SideNav />
 
-      <div className="container h-full w-[80%] pt-10 mx-auto py-8 px-4">
-        <h2 className="text-3xl font-semibold mb-6">Add New Country</h2>
+      <div className="container h-full w-full sm:w-[80%] pt-10 mx-auto py-8 px-4">
+        <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
+          Add New Country
+        </h2>
 
         <form
           onSubmit={handleSubmit(handleFormSubmit)}

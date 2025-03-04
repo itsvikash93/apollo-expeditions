@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from "../../utils/axios";
 import { motion } from "framer-motion";
 
-const EnquiryForm = ({ trip, onClose }) => {
+const EnquiryForm = ({ pkg, onClose }) => {
   const {
     register,
     handleSubmit,
@@ -15,11 +15,9 @@ const EnquiryForm = ({ trip, onClose }) => {
   const onSubmit = async (data) => {
     try {
       await axios
-        .post("/enquiries/trip", {
+        .post("/enquiries/package", {
           ...data,
-          tripTitle: trip.title,
-          tripLocation: trip.location,
-          tripDate: trip.date,
+          packageTitle: pkg.name,
         })
         .then((res) => {
           if (res.status === 200) {
@@ -57,13 +55,7 @@ const EnquiryForm = ({ trip, onClose }) => {
       >
         <h2 className="text-2xl font-bold mb-4 text-Primary">Enquiry Form</h2>
         <p className="mb-2">
-          <strong>Trip:</strong> {trip.title}
-        </p>
-        <p className="mb-2">
-          <strong>Location:</strong> {trip.location}
-        </p>
-        <p className="mb-2">
-          <strong>Date:</strong> {trip.date}
+          <strong>Package:</strong> {pkg.name}
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>

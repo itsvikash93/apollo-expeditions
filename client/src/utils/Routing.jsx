@@ -5,7 +5,6 @@ import Home from "../components/home/Home";
 import Dashboard from "../components/admin/Dashboard";
 import AddOffer from "../components/admin/AddOffer";
 import AddPackage from "../components/admin/AddPackage";
-import Enquiries from "../components/admin/Enquiries";
 import EnquiryDetails from "../components/admin/EnquiryDetails";
 
 import AddCountry from "../components/admin/AddCountry";
@@ -26,6 +25,8 @@ import AdminOffers from "../components/admin/pages/AdminOffers";
 import AdminExperiences from "../components/admin/pages/AdminExperiences";
 import AdminUpcomingTrips from "../components/admin/pages/AdminUpcomingTrips";
 import AddUpcomingTrip from "../components/admin/AddUpcomingTrip";
+import AdminEnquiries from "../components/admin/pages/AdminEnquiries";
+
 const Routing = () => {
   return (
     <Routes>
@@ -52,7 +53,7 @@ const Routing = () => {
       <Route path="/admin/popular-places/add" element={<AddPopularPlace />} />
       <Route path="/admin/vlogs" element={<AdminVlogs />} />
       <Route path="/admin/vlogs/add" element={<AddVlog />} />
-      <Route path="/admin/enquiries" element={<Enquiries />} />
+      <Route path="/admin/enquiries" element={<AdminEnquiries />} />
       <Route path="/admin/enquiries/:id" element={<EnquiryDetails />} />
     </Routes>
   );

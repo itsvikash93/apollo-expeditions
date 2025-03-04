@@ -4,18 +4,20 @@ import { useParams, Link } from "react-router-dom";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
-
+import Package from "./Package";
+import EnquiryForm from "./EnquiryForm";
 const Offers = () => {
   const { offerSlug } = useParams();
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState(null);
 
   useEffect(() => {
     const fetchPackages = async () => {
       try {
         const response = await axios.get(`/offers/${offerSlug}`);
-        // console.log(response);
+        console.log(response.data);
         setPackages(response.data.packages);
         setLoading(false);
       } catch (err) {
@@ -74,51 +76,25 @@ const Offers = () => {
             <p className="mt-2">Please check back later for new offerings.</p>
           </div>
         ) : (
-          <div className="flex flex-wrap gap-4 flex-shrink-0">
+          <div className="w-full flex flex-wrap gap-4 flex-shrink-0">
             {packages.map((pkg) => (
-              <div
+              <Package
                 key={pkg._id}
-                className="bg-white shrink-0 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <div className="relative">
-                  <img
-                    src={pkg.imageUrl}
-                    alt={pkg.name}
-                    className="w-full h-56 object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-
-                <div className="p-6">
-                  <h2 className="text-2xl custom-font1 tracking-wider mb-3">
-                    {pkg.name}
-                  </h2>
-                  <p className="text-gray-600 mb-6 line-clamp-3">
-                    {pkg.description}
-                  </p>
-
-                  <Link
-                    to={pkg.pdfUrl}
-                    className="inline-flex mb-3 items-center justify-center w-full bg-black text-white py-3 px-4 rounded-lg hover:bg-opacity-80 transition duration-200 font-medium"
-                  >
-                    <HiOutlineDocumentDownload className="mr-1 text-2xl" />
-                    Explore More
-                  </Link>
-
-                  <Link
-                    to={`/contact`}
-                    className="inline-flex items-center justify-center w-full bg-black text-white py-3 px-4 rounded-lg hover:bg-opacity-80 transition duration-200 font-medium"
-                  >
-                    Enquire
-                  </Link>
-                </div>
-              </div>
+                pkg={pkg}
+                onBookNow={() => setSelectedPackage(pkg)}
+              />
             ))}
           </div>
         )}
       </div>
       <Footer />
+
+      {selectedPackage && (
+        <EnquiryForm
+          pkg={selectedPackage}
+          onClose={() => setSelectedPackage(null)}
+        />
+      )}
     </div>
   );
 };

@@ -76,7 +76,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-7 pt-7 text-center Third">
-          <p>&copy; 2023 Apollo Expeditions. All rights reserved.</p>
+          <p>&copy; 2025 Apollo Expeditions. All rights reserved.</p>
         </div>
       </div>
     </footer>
