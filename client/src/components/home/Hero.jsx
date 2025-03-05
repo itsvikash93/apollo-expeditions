@@ -4,26 +4,54 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import Hero1 from "../../assets/Hero 1.avif";
+import Hero2 from "../../assets/Hero 2.avif";
+import Hero3 from "../../assets/Hero 3.avif";
+import Hero4 from "../../assets/Hero 4.avif";
+import Hero5 from "../../assets/Hero 5.avif";
+import Hero6 from "../../assets/Hero 6.avif";
+import Hero7 from "../../assets/Hero 7.avif";
+import Hero8 from "../../assets/Hero 8.avif";
 
 const Hero = () => {
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      text: "Explore the ancient Brihadishwara Temple",
+      src: Hero1,
+      text: "OFF ROAD ADVENTURES",
     },
     {
-      src: "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      text: "Discover the beauty of Tanjore",
+      src: Hero2,
+      text: "LUXURIOUS CITY TOURS",
     },
     {
-      src: "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      text: "Unwind in the serene surroundings",
+      src: Hero3,
+      text: "ANCIENT INDIA EXPLORATIONS",
+    },
+    {
+      src: Hero4,
+      text: "THRILLING HORSE SAFARI",
+    },
+    {
+      src: Hero5,
+      text: "TREKKING HIKING & CAMPING IN THE HIMALAYAS",
+    },
+    {
+      src: Hero6,
+      text: "EXPLORE INDIA'S WILDLIFE",
+    },
+    {
+      src: Hero7,
+      text: "SPIRITUAL JOURNEY TO INDIA",
+    },
+    {
+      src: Hero8,
+      text: "ADVENTURE SPORTS",
     },
   ];
 
   return (
     <>
-      <div className="relative top-0 h-[80vh] w-full overflow-hidden">
+      <div className="relative h-[50vh] sm:h-[85vh] w-full overflow-hidden">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           spaceBetween={30}
@@ -42,15 +70,16 @@ const Hero = () => {
               <img
                 src={image.src}
                 alt={`Hero Image ${index + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover blur-[0px]"
               />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-80 -translate-y-1/2 Third text-center">
-                <h2 className="text-7xl custom-font tracking-wider w-[90%]">{image.text}</h2>
+              <div className="absolute top-1/2 left-1/2 flex justify-center items-center transform -translate-x-1/2 -translate-y-1/2 text-[#edead3] text-center w-full">
+                <h2 className="text-4xl sm:text-7xl custom-font tracking-wider w-[90%] text-center">
+                  {image.text}
+                </h2>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* <div className="h-20 w-[150%] bg_Third absolute -left-10 -bottom-10 z-10 blur-md"></div> */}
       </div>
     </>
   );

@@ -17,7 +17,6 @@ const CountryPage = () => {
     const fetchPlaces = async () => {
       try {
         const response = await axios.get(`/countries/${countrySlug}`);
-        console.log(response.data);
         setCountry(response.data);
         setPlaces(response.data.popularPlaces);
         setLoading(false);
@@ -51,7 +50,7 @@ const CountryPage = () => {
   return (
     <div className="min-h-screen bg_Third flex flex-col">
       <Nav className="absolute" />
-      <div className="container mx-auto px-4 py-12 mt-16">
+      <div className="container mx-auto px-4 pt-18 sm:pt-0 py-8 sm:px-6 sm:mt-24">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl custom-font1 tracking-wide mb-4">
             Discover {country.name}
@@ -93,24 +92,26 @@ const CountryPage = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center First mt-8 p-8 bg-white rounded-lg shadow-md">
-            <svg
-              className="w-16 h-16 mx-auto mb-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M20 12H4M12 20V4"
-              />
-            </svg>
-            <p className="text-xl font-medium">
-              No popular places available for {country.name}
-            </p>
-            <p className="mt-2">Please check back later for updates.</p>
+          <div className="text-center First mt-8 flex justify-center items-center ">
+            <div className="bg-white w-1/3 p-8 shadow-md rounded-lg">
+              <svg
+                className="w-16 h-16 mx-auto mb-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M20 12H4M12 20V4"
+                />
+              </svg>
+              <p className="text-xl font-medium">
+                No popular places available for {country.name}
+              </p>
+              <p className="mt-2">Please check back later for updates.</p>
+            </div>
           </div>
         )}
       </div>

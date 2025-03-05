@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Package = ({ pkg, onBookNow }) => {
   return (
-    <div className="bg-white rounded-lg w-[23vw] shadow-xl overflow-hidden transition-transform duration-300 hover:scale-103">
+    <div className="bg-white rounded-lg sm:w-[23vw] shadow-xl overflow-hidden transition-transform duration-300 hover:scale-103">
       <div className="relative h-48">
         <img
           src={pkg.imageUrl}

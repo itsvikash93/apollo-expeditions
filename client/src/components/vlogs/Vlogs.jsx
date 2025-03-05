@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
+import { Link } from "react-router-dom";
+import Youtube from "../../assets/Youtube.jpg";
 
 const Vlogs = () => {
   const [videos, setVideos] = useState([]);
@@ -26,10 +28,19 @@ const Vlogs = () => {
   return (
     <div className="w-full min-h-screen bg_Third flex flex-col ">
       <Nav className="absolute" />
-      <div className="w-full min-h-screen bg_Third px-4 sm:px-6 lg:px-8 py-8 mt-16 sm:mt-20 lg:mt-24">
-        <h1 className="text-2xl sm:text-3xl lg:text-5xl tracking-wide custom-font1 mb-6 sm:mb-8 lg:mb-10 text-center">
-          logo Blue Planet Documentaries
-        </h1>
+      <div className="w-full min-h-screen bg_Third px-4 pt-18 sm:pt-0 py-8 sm:px-6 sm:mt-24 justify-items-center">
+        <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-5 mb-6 sm:mb-14">
+          <Link to="https://qr.me-qr.com/0bSIOXmp" target="_blank">
+            <img
+              src={Youtube}
+              alt="logo"
+              className="w-20 object-cover rounded-full "
+            />
+          </Link>
+          <h1 className="text-4xl sm:text-5xl tracking-wide custom-font1 text-center">
+            Blue Planet Documentaries
+          </h1>
+        </div>
 
         {/* Show loading indicator */}
         {loading && (

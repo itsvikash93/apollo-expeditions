@@ -4,7 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
 const dropdownVariants = {
@@ -62,24 +63,165 @@ const Nav = () => {
   };
 
   return (
-    <nav className=" self-center bg-[#edead3] shadow-lg rounded-full top-2 absolute w-[95%] z-50">
+    <nav className="self-center bg-[#edead3] shadow-lg rounded-full top-2 absolute w-[95%] z-50">
       <div className="max-w-10xl mx-auto px-0 sm:px-6">
-        <div className="flex justify-between items-center h-12">
+        <div className="flex justify-between px-5 items-center h-12 relative w-full">
           <Link to="/" onClick={() => handleNavigation("/")}>
             <img
-              src={logo}
+              src="/apollo-logo.jpg"
               alt="Apollo Expeditions Logo"
-              className="h-48 w-auto object-contain"
+              className="h-8 w-auto object-contain"
             />
           </Link>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md Third"
+            className="md:hidden rounded-md text-black"
           >
-            {isMenuOpen ? <ImCross /> : <GiHamburgerMenu />}
+            {isMenuOpen ? (
+              <MdClose className="text-2xl" />
+            ) : (
+              <GiHamburgerMenu className="text-xl" />
+            )}
           </button>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={dropdownVariants}
+                className="absolute bg-[#edead3] shadow-md rounded-md top-12 w-full left-0 z-40"
+              >
+                <Link
+                  to="/"
+                  className="block px-4 py-2 hover:text-gray-500"
+                  onClick={() => handleNavigation("/")}
+                >
+                  Home
+                </Link>
+                <div className="relative">
+                  <div
+                    className="flex items-center justify-between px-4 py-2 hover:text-gray-500 cursor-pointer"
+                    onClick={() => {
+                      if (activeDropdown === "offers") {
+                        setActiveDropdown(null);
+                      } else {
+                        setActiveDropdown("offers");
+                      }
+                    }}
+                  >
+                    <h3>Packages & Offers</h3>
+                    {activeDropdown === "offers" ? (
+                      <MdKeyboardArrowUp className="text-xl mt-1" />
+                    ) : (
+                      <MdKeyboardArrowDown className="text-xl mt-1" />
+                    )}
+                  </div>
+                  <AnimatePresence>
+                    {activeDropdown === "offers" && (
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={dropdownVariants}
+                        className="bg-[#E0DDC7] rounded-md mt-1 w-full z-40"
+                      >
+                        {/* Assuming offers is an array of offer objects */}
+                        {offers.length > 0 ? (
+                          offers.map((offer) => (
+                            <Link
+                              key={offer._id}
+                              to={`/offers/${offer.slug}`}
+                              className="block px-4 py-2 hover:text-gray-500"
+                              onClick={() =>
+                                handleNavigation(`/offers/${offer.slug}`)
+                              }
+                            >
+                              {offer.name}
+                            </Link>
+                          ))
+                        ) : (
+                          <p className="px-4 py-2 hover:text-gray-500">
+                            No Offers
+                          </p>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <div className="relative">
+                  <div
+                    className="flex items-center justify-between px-4 py-2 hover:text-gray-500 cursor-pointer"
+                    onClick={() => {
+                      if (activeDropdown === "countries") {
+                        setActiveDropdown(null);
+                      } else {
+                        setActiveDropdown("countries");
+                      }
+                    }}
+                  >
+                    <h3>Travel Guide</h3>
+                    {activeDropdown === "countries" ? (
+                      <MdKeyboardArrowUp className="text-xl mt-1" />
+                    ) : (
+                      <MdKeyboardArrowDown className="text-xl mt-1" />
+                    )}
+                  </div>
+                  <AnimatePresence>
+                    {activeDropdown === "countries" && (
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={dropdownVariants}
+                        className="bg-[#E0DDC7] rounded-md mt-1 w-full z-40"
+                      >
+                        {/* Assuming countries is an array of country objects */}
+                        {countries.length > 0 ? (
+                          countries.map((country) => (
+                            <Link
+                              key={country._id}
+                              to={`/encyclopedia/${country.slug}`}
+                              className="block px-4 py-2 hover:text-gray-500"
+                              onClick={() =>
+                                handleNavigation(`/encyclopedia/${country.slug}`)
+                              }
+                            >
+                              {country.name}
+                            </Link>
+                          ))
+                        ) : (
+                          <p className="px-4 py-2 hover:text-gray-500">
+                            No Countries
+                          </p>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <Link
+                  to="/vlogs"
+                  className="block px-4 py-2 hover:text-gray-500"
+                  onClick={() => handleNavigation("/vlogs")}
+                >
+                  Our Vlogs
+                </Link>
+                <Link
+                  to="/contact"
+                  className="block px-4 py-2 hover:text-gray-600"
+                  onClick={() => handleNavigation("/contact")}
+                >
+                  Contact Us
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex text-md font-semibold justify-between gap-8 px-6 h-full pt-3">

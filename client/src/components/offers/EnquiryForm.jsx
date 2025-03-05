@@ -44,7 +44,7 @@ const EnquiryForm = ({ pkg, onClose }) => {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 bg-white/40 backdrop-blur-sm flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-white/40 backdrop-blur-sm flex justify-center items-center z-50 px-5">
       <motion.div
         ref={formRef}
         className="bg-white p-6 rounded-lg shadow-lg w-96 relative"

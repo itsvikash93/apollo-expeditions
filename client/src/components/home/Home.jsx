@@ -25,7 +25,6 @@ const Home = () => {
       setPartners(res.data);
     });
     axios.get("/experiences").then((res) => {
-      console.log(res.data);
       setExperiences(res.data);
     });
   }, []);
@@ -35,10 +34,10 @@ const Home = () => {
       <Nav className="absolute" />
       <Hero />
       <AboutUs />
-      <div className="py-10 bg-Secondary flex flex-col">
+      <div className="sm:py-10 bg-Secondary flex flex-col">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className="mt-2 text-5xl leading-8 custom-font1 tracking-wide sm:text-4xl">
+          <div className="text-center mb-5 sm:mb-16">
+            <h3 className="mt-2 text-4xl custom-font1 tracking-wide ">
               Upcoming Expeditions & Trips
             </h3>
           </div>

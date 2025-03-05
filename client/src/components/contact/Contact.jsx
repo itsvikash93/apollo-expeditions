@@ -6,20 +6,20 @@ import Nav from "../navbar/Nav";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col">
+    <div className="w-full flex flex-col">
       <Nav className="absolute" />
 
-      <div className="mt-24 h-full min-h-96 flex flex-col">
+      <div className="w-full h-full min-h-96 flex flex-col px-4 pt-18 sm:pt-0 py-8 sm:px-6 sm:mt-24 ">
         {/* Header */}
-        <h1 className=" text-center text-5xl tracking-wide custom-font1">
+        <h1 className=" text-center text-4xl sm:text-5xl tracking-wide custom-font1">
           Contact Us
         </h1>
 
         {/* Main Container */}
-        <div className="flex gap-40 mt-10 ml-20 justify-center">
+        <div className="flex flex-col sm:flex-row gap-10 sm:gap-40 mt-5 sm:mt-10 justify-center">
           {/* Left Section: Contact Details */}
-          <div className="w-fit bg-[#edead3] rounded-xl text-First shadow-xl p-10 ">
-            <h2 className="text-3xl font-semibold  text-gray-500">
+          <div className="w-full sm:w-[30%] bg-[#edead3] rounded-xl text-First shadow-xl p-4 sm:p-10 ">
+            <h2 className="text-3xl font-semibold text-gray-500">
               Get in Touch
             </h2>
 
@@ -63,7 +63,7 @@ const Contact = () => {
           </div>
 
           {/* Right Section: Contact Form */}
-          <div className="w-[30vw] bg-[#edead3] shadow-xl p-10 rounded-xl">
+          <div className="w-full sm:w-[30%] bg-[#edead3] shadow-xl px-2 py-4 sm:p-10 rounded-xl">
             <form className="p-4">
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium">
@@ -131,7 +131,7 @@ const Contact = () => {
         </div>
 
         {/* Google Map Section */}
-        <div className="h-80 mx-20 my-10 rounded-xl overflow-hidden flex justify-center relative">
+        <div className="h-80 sm:mx-20 sm:my-10 rounded-xl overflow-hidden flex justify-center relative">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110204.75443551115!2d77.93473335243701!3d30.325402625777514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929c356c888af%3A0x4c3562c032518799!2sDehradun%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1741098124598!5m2!1sen!2sin"
             className="w-full h-full"
