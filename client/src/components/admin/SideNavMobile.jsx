@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 
-
 import { motion, AnimatePresence } from "framer-motion";
 
 const SideNavMobile = () => {
@@ -14,8 +13,8 @@ const SideNavMobile = () => {
   };
 
   return (
-    <nav className="bg-[#A3D1C6] text-[#000] px-4 py-5 block sm:hidden min-h-fit relative w-full">
-      <div className="flex justify-between items-center">
+    <nav className="bg-[#A3D1C6] text-[#000] block sm:hidden relative w-full">
+      <div className="flex justify-between items-center z-[999] px-4 py-5 ">
         <h1 className="text-3xl font-bold">Admin</h1>
         <button onClick={toggleMenu} className="text-2xl">
           {isOpen ? (
@@ -28,11 +27,11 @@ const SideNavMobile = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="text-2xl px-4 py-5 absolute z-[100] left-0 w-full bg-[#A3D1C6]"
+            className="text-2xl px-4 py-5 absolute z-[99] left-0 w-full bg-[#A3D1C6]"
           >
             <Link
               to="/admin/dashboard"
