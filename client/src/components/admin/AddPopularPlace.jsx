@@ -3,7 +3,7 @@ import SideNav from "./SideNav";
 import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+import SideNavMobile from "./SideNavMobile";
 const AddPopularPlace = () => {
   const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
@@ -54,16 +54,17 @@ const AddPopularPlace = () => {
     }
   };
   return (
-    <div className="bg-gray-100 w-full h-screen flex ">
+    <div className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
       <SideNav />
-      <div className="container h-full w-full sm:w-[80%] mx-auto py-8 px-4 overflow-y-auto">
+      <SideNavMobile />
+      <div className="container h-full w-full sm:w-[80%] sm:pt-10 mx-auto py-4 sm:py-8 px-4 overflow-y-auto">
         <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
           Add New Popular Place
         </h2>
 
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="bg-white shadow-md rounded-lg p-6"
+          className="bg-white shadow-md rounded-lg py-4 px-3 sm:p-6"
         >
           <div className="mb-4">
             <label htmlFor="name" className="block font-medium text-gray-700">

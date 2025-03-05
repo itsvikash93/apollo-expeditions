@@ -2,7 +2,7 @@ import React from "react";
 import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import SideNav from "./SideNav";
-
+import SideNavMobile from "./SideNavMobile";
 const AddExperience = () => {
   const {
     register,
@@ -33,17 +33,17 @@ const AddExperience = () => {
     }
   };
   return (
-    <div id="main" className="bg-gray-100 w-full h-screen flex ">
+    <div id="main" className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
       <SideNav />
-
-      <div className="container h-full w-full sm:w-[80%] pt-10 mx-auto py-8 px-4">
+      <SideNavMobile />
+      <div className="container h-full w-full sm:w-[80%] sm:pt-10 mx-auto py-4 sm:py-8 px-4">
         <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
           Add New Traveller Experience
         </h2>
 
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="bg-white shadow-md rounded-lg p-6"
+          className="bg-white shadow-md rounded-lg py-4 px-3 sm:p-6"
         >
           <div className="mb-4">
             <label

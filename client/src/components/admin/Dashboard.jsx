@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SideNav from "./SideNav";
-
+import SideNavMobile from "./SideNavMobile";
 const Dashboard = () => {
   return (
-    <div id="main" className="bg-[#F5F5F5] w-full h-screen flex ">
+    <div id="main" className="bg-[#F5F5F5] w-full h-screen flex flex-col sm:flex-row">
       <SideNav />
+      <SideNavMobile />
 
-      <div className="container mx-auto pt-12 px-4 w-[80%] h-full">
+      <div className="container mx-auto sm:pt-10 px-4 w-full sm:w-[80%] h-full">
         <h2 className="text-3xl font-semibold mb-6">
           Welcome to the Admin Dashboard
         </h2>

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import SideNav from "./SideNav";
-
+import SideNavMobile from "./SideNavMobile";
 const EnquiryDetails = () => {
   const location = useLocation();
   const enquiry = location.state;
   console.log(enquiry);
   return (
-    <div className="bg-gray-100 w-full h-screen flex ">
+    <div className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
       <SideNav />
-      <div className="container h-full pt-12 w-full sm:w-[80%] mx-auto py-8 px-4">
+      <SideNavMobile />
+      <div className="container h-full sm:pt-10 w-full sm:w-[80%] mx-auto py-4 sm:py-8 px-4">
         <h1 className="text-2xl font-bold mb-6">Enquiry Details</h1>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">

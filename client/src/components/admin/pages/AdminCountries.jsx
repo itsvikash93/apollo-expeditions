@@ -3,6 +3,7 @@ import SideNav from "../SideNav";
 import { useEffect } from "react";
 import axios from "../../../utils/axios";
 import { Link } from "react-router-dom";
+import SideNavMobile from "../SideNavMobile";
 const AdminCountries = () => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,11 +21,12 @@ const AdminCountries = () => {
     });
   };
   return (
-    <div id="main" className="bg-gray-100 w-full h-screen flex ">
+    <div id="main" className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
       <SideNav />
-      <div className="container h-full w-full sm:w-[80%] mx-auto py-8 px-4 overflow-y-auto">
+      <SideNavMobile />
+      <div className="container h-full w-full sm:w-[80%] mx-auto py-4 sm:py-8 px-4 overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
+          <h1 className="text-2xl sm:text-3xl font-bold text-black">
             Countries
           </h1>
           <Link

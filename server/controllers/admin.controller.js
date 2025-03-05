@@ -18,7 +18,6 @@ module.exports.getEnquiries = async (req, res) => {
   try {
     const tripEnquiries = await tripEnquiryModel.find();
     const packageEnquiries = await packageEnquiryModel.find();
-    console.log(tripEnquiries, packageEnquiries);
     res.status(200).json({
       tripEnquiries: tripEnquiries,
       packageEnquiries: packageEnquiries,

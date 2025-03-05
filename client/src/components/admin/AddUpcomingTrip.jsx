@@ -3,6 +3,7 @@ import axios from "../../utils/axios";
 import { useState } from "react";
 import SideNav from "./SideNav";
 import { useNavigate } from "react-router-dom";
+import SideNavMobile from "./SideNavMobile";
 const AddUpcomingTrip = () => {
   const {
     register,
@@ -75,15 +76,16 @@ const AddUpcomingTrip = () => {
   };
 
   return (
-    <div className="bg-gray-100 w-full h-screen flex ">
+    <div className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
       <SideNav />
-      <div className="container h-full w-full sm:w-[80%] mx-auto py-8 px-4 overflow-y-auto">
+      <SideNavMobile />
+      <div className="container h-full w-full sm:w-[80%] sm:pt-10 mx-auto py-4 sm:py-8 px-4 overflow-y-auto">
         <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
           Add Upcoming Trip
         </h2>
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="bg-white shadow-md rounded-lg p-6"
+          className="bg-white shadow-md rounded-lg py-4 px-3 sm:p-6"
         >
           <div className="mb-4">
             <label className="block font-medium">Title:</label>
@@ -110,7 +112,7 @@ const AddUpcomingTrip = () => {
               <p className="text-red-500 text-sm">{errors.location.message}</p>
             )}
           </div>
-          <div className="flex gap-6 mb-6">
+          <div className="flex flex-col sm:flex-row gap-6 mb-6">
             <div className="w-full">
               <label className="block text-gray-700 font-semibold mb-2">
                 Start Date:
