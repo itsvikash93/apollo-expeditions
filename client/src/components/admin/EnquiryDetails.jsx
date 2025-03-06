@@ -4,8 +4,8 @@ import SideNav from "./SideNav";
 import SideNavMobile from "./SideNavMobile";
 const EnquiryDetails = () => {
   const location = useLocation();
-  const enquiry = location.state;
-  console.log(enquiry);
+  const { type, ...enquiry } = location.state;
+
   return (
     <div className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
       <SideNav />
@@ -13,8 +13,8 @@ const EnquiryDetails = () => {
       <div className="container h-full sm:pt-10 w-full sm:w-[80%] mx-auto py-4 sm:py-8 px-4">
         <h1 className="text-2xl font-bold mb-6">Enquiry Details</h1>
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">
-            Details for Enquiry ID: {enquiry._id}
+          <h2 className="text-lg font-bold mb-4">
+            Details of {type.charAt(0).toUpperCase() + type.slice(1)} Enquiry
           </h2>
           <p className="mb-4">
             <strong>Name: </strong>

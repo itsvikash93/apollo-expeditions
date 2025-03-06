@@ -2,9 +2,9 @@ import React from "react";
 
 const Associations = ({ partners }) => {
   return (
-    <section className="pb-10 sm:py-10 bg_Third">
+    <section className="py-5 pb-10 sm:py-10 bg_Third">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-5 sm:mb-16">
+        <div className="text-center mb-5 sm:mb-10">
           <h3 className="mt-2 text-4xl tracking-wide custom-font1 ">
             Our Associations & Partnerships
           </h3>

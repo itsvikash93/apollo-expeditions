@@ -39,68 +39,78 @@ const SideNavMobile = () => {
           >
             <Link
               to="/admin/dashboard"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
             >
               Dashboard
             </Link>
-            <Link
-              to="/admin/offers"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Offers & Packages
-            </Link>
-            <Link
-              to="/admin/experiences"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Traveller Experiences
-            </Link>
-            <Link
-              to="/admin/partners"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Partners
-            </Link>
-            <Link
-              to="/admin/upcoming-trips"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Upcoming Trips
-            </Link>
-            <Link
-              to="/admin/packages"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Packages
-            </Link>
-            <Link
-              to="/admin/countries"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Countries
-            </Link>
-            <Link
-              to="/admin/popular-places"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Popular Places
-            </Link>
-            <Link
-              to="/admin/vlogs"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
-            >
-              Vlogs
-            </Link>
+
             <Link
               to="/admin/enquiries"
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
             >
               Manage Enquiries
             </Link>
+
             <Link
-              // to="/admin/logout"
+              to="/admin/upcoming-trips"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Upcoming Trips
+            </Link>
+
+            <Link
+              to="/admin/offers"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Offers & Packages
+            </Link>
+
+            <Link
+              to="/admin/packages"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Packages
+            </Link>
+
+            <Link
+              to="/admin/countries"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Countries
+            </Link>
+
+            <Link
+              to="/admin/popular-places"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Popular Places
+            </Link>
+
+            <Link
+              to="/admin/experiences"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Traveller Experiences
+            </Link>
+
+            <Link
+              to="/admin/partners"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Partners
+            </Link>
+
+            <Link
+              to="/admin/vlogs"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+            >
+              Vlogs
+            </Link>
+
+            <Link
+              to="/admin/logout"
               onClick={handleLogout}
-              className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
+              className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
             >
               Logout
             </Link>

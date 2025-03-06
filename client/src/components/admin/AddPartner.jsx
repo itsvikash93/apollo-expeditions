@@ -3,7 +3,9 @@ import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import SideNav from "./SideNav";
 import SideNavMobile from "./SideNavMobile";
+import { useNavigate } from "react-router-dom";
 const AddPartner = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -25,8 +27,8 @@ const AddPartner = () => {
             },
           })
           .then((res) => {
-            console.log("partner added");
             reset();
+            navigate("/admin/partners");
           });
         reset();
       });
@@ -35,7 +37,10 @@ const AddPartner = () => {
     }
   };
   return (
-    <div id="main" className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
+    <div
+      id="main"
+      className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row"
+    >
       <SideNav />
       <SideNavMobile />
       <div className="container h-full w-full sm:w-[80%] sm:pt-10 mx-auto py-4 sm:py-8 px-4">

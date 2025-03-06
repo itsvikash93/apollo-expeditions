@@ -29,14 +29,21 @@ const Vlogs = () => {
     <div className="w-full min-h-screen bg_Third flex flex-col ">
       <Nav className="absolute" />
       <div className="w-full min-h-screen bg_Third px-4 pt-18 sm:pt-0 py-8 sm:px-6 sm:mt-24 justify-items-center">
+        <p className="text-xl sm:text-2xl tracking-wide custom-font1">
+          Follow Us On
+        </p>
         <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-5 mb-6 sm:mb-14">
-          <Link to="https://qr.me-qr.com/0bSIOXmp" target="_blank">
+          <Link
+            to="https://www.youtube.com/@BluePlanetDocumentaries"
+            target="_blank"
+          >
             <img
               src={Youtube}
               alt="logo"
               className="w-20 object-cover rounded-full "
             />
           </Link>
+
           <h1 className="text-4xl sm:text-5xl tracking-wide custom-font1 text-center">
             Blue Planet Documentaries
           </h1>

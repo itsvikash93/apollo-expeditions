@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { HiOutlineDocumentDownload } from "react-icons/hi";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
 import Package from "./Package";
@@ -76,7 +77,7 @@ const Offers = () => {
             </div>
           </div>
         ) : (
-          <div className="w-full flex flex-wrap justify-center gap-4 lg:gap-10 flex-shrink-0">
+          <div className="w-full flex flex-wrap justify-center gap-4 flex-shrink-0">
             {packages.map((pkg) => (
               <Package
                 key={pkg._id}

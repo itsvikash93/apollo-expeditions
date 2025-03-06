@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
@@ -63,14 +62,18 @@ const Nav = () => {
   };
 
   return (
-    <nav className="self-center bg-[#edead3] shadow-lg rounded-full top-2 absolute w-[95%] z-50">
+    <nav
+      className={`self-center bg-[#edead3] shadow-lg ${
+        isMenuOpen ? "rounded-t-lg" : "rounded-lg"
+      } top-2 sm:rounded-full absolute w-[95%] z-50`}
+    >
       <div className="max-w-10xl mx-auto px-0 sm:px-6">
-        <div className="flex justify-between px-5 items-center h-12 relative w-full">
+        <div className="flex justify-between px-4 items-center h-12 relative w-full">
           <Link to="/" onClick={() => handleNavigation("/")}>
             <img
               src="/apollo-logo.jpg"
               alt="Apollo Expeditions Logo"
-              className="h-8 w-auto object-contain"
+              className="h-8 w-auto object-contain rounded"
             />
           </Link>
 
@@ -94,7 +97,7 @@ const Nav = () => {
                 animate="visible"
                 exit="exit"
                 variants={dropdownVariants}
-                className="absolute bg-[#edead3] shadow-md rounded-md top-12 w-full left-0 z-40"
+                className="absolute bg-[#edead3] shadow-md rounded-b-lg top-12 w-full left-0 z-40"
               >
                 <Link
                   to="/"
@@ -189,7 +192,9 @@ const Nav = () => {
                               to={`/encyclopedia/${country.slug}`}
                               className="block px-4 py-2 hover:text-gray-500"
                               onClick={() =>
-                                handleNavigation(`/encyclopedia/${country.slug}`)
+                                handleNavigation(
+                                  `/encyclopedia/${country.slug}`
+                                )
                               }
                             >
                               {country.name}

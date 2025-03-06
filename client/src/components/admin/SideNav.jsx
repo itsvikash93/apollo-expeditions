@@ -17,11 +17,47 @@ const SideNav = () => {
         >
           Dashboard
         </Link>
+
+        <Link
+          to="/admin/enquiries"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Manage Enquiries
+        </Link>
+
+        <Link
+          to="/admin/upcoming-trips"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Upcoming Trips
+        </Link>
+
         <Link
           to="/admin/offers"
           className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
         >
           Offers & Packages
+        </Link>
+
+        <Link
+          to="/admin/packages"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Packages
+        </Link>
+
+        <Link
+          to="/admin/countries"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Countries
+        </Link>
+
+        <Link
+          to="/admin/popular-places"
+          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
+        >
+          Popular Places
         </Link>
 
         <Link
@@ -39,42 +75,12 @@ const SideNav = () => {
         </Link>
 
         <Link
-          to="/admin/upcoming-trips"
-          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
-        >
-          Upcoming Trips
-        </Link>
-
-        <Link
-          to="/admin/packages"
-          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
-        >
-          Packages
-        </Link>
-        <Link
-          to="/admin/countries"
-          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
-        >
-          Countries
-        </Link>
-        <Link
-          to="/admin/popular-places"
-          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
-        >
-          Popular Places
-        </Link>
-        <Link
           to="/admin/vlogs"
           className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
         >
           Vlogs
         </Link>
-        <Link
-          to="/admin/enquiries"
-          className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
-        >
-          Manage Enquiries
-        </Link>
+
         <Link
           to="/admin/logout"
           onClick={handleLogout}

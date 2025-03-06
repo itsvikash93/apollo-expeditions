@@ -1,40 +1,52 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination } from "swiper/modules";
+import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowLeft } from "react-icons/fa6";
+
+import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 
 const Experinces = ({ experiences }) => {
+  const swiperRef = useRef(null);
   return (
-    <section className="py-5 lg:py-10 bg_Third flex flex-col w-full ">
-      <div className="px-4 lg:px-6">
-        <div className="text-center mb-5 lg:mb-16">
+    <section className="pt-5 bg_Third flex flex-col w-full">
+      <div className="px-4 sm:py-5 lg:px-6">
+        <div className="text-center mb-5 lg:mb-10">
           <h3 className="mt-2 text-4xl custom-font1 tracking-wide">
-            Traveler's Experiences
+            Traveller's Experiences
           </h3>
         </div>
 
-        <div className="w-full h-[30vh] sm:h-[25vh] lg:h-[40vh]">
+        <div className="w-full h-[30vh] sm:h-[25vh] lg:h-[40vh] flex flex-col items-center">
           <Swiper
-            className="h-full w-full relative"
-            spaceBetween={30}
+            key={experiences.length}
+            className="mySwiper h-full w-full relative "
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
             loop={true}
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
-            pagination={{
-              clickable: true,
-              // el: ".swiper-pagination",
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 250,
+              modifier: 2.5,
+              slideShadows: true,
+              scale: 0.9,
             }}
             breakpoints={{
-              320: { slidesPerView: 1 }, // Mobile
-              640: { slidesPerView: 1 }, // Small screens
-              768: { slidesPerView: 2 }, // Tablets
-              1024: { slidesPerView: 3 }, // Large screens
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 5 },
             }}
-            modules={[Pagination, Autoplay]}
+            modules={[Autoplay, EffectCoverflow, Navigation]}
           >
             {experiences.map((experience, index) => (
               <SwiperSlide key={index} className="w-full sm:w-[50%] h-full">
@@ -46,6 +58,20 @@ const Experinces = ({ experiences }) => {
               </SwiperSlide>
             ))}
           </Swiper>
+          <div className="w-fit mt-3">
+            <button
+              className="bg-[#edead3] p-2 rounded-full mr-2"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <FaArrowLeft className="text-xl" />
+            </button>
+            <button
+              className="bg-[#edead3] p-2 rounded-full"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <FaArrowRight className="text-xl" />
+            </button>
+          </div>
         </div>
       </div>
       <hr className="w-[90%] self-center mt-10 border-1 border-zinc-300" />

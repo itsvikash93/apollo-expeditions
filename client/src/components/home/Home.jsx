@@ -7,7 +7,7 @@ import Associations from "./Associations";
 import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import axios from "../../utils/axios";
-import EnquiryForm from "../EnquiryForm"; // Import Modal
+import EnquiryForm from "../EnquiryForm";
 
 const Home = () => {
   const [upcomingTrips, setUpcomingTrips] = useState([]);
@@ -34,11 +34,11 @@ const Home = () => {
       <Nav className="absolute" />
       <Hero />
       <AboutUs />
-      <div className="lg:py-10 bg-Secondary flex flex-col">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-5 sm:mb-8 lg:mb-16">
+      <div className=" bg-Secondary flex flex-col">
+        <div className="px-4 sm:py-5 sm:px-6 lg:px-8">
+          <div className="text-center my-5 sm:mb-8 lg:mb-10">
             <h3 className="mt-2 sm:mt-0 text-4xl custom-font1 tracking-wide ">
-              Upcoming Expeditions & Trips
+              Upcoming Trips & Expeditions
             </h3>
           </div>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center flex-shrink-0 gap-8">

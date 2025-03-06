@@ -3,7 +3,9 @@ import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import SideNav from "./SideNav";
 import SideNavMobile from "./SideNavMobile";
+import { useNavigate } from "react-router-dom";
 const AddCountry = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,8 +15,9 @@ const AddCountry = () => {
   const handleFormSubmit = (data) => {
     try {
       axios.post("/api/admin/countries", data).then((res) => {
-        console.log("country added");
+        // console.log("country added");
         reset();
+        navigate("/admin/countries");
       });
     } catch (error) {
       console.error("Error adding country:", error);

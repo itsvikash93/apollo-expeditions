@@ -3,7 +3,9 @@ import SideNav from "./SideNav";
 import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import SideNavMobile from "./SideNavMobile";
+import { useNavigate } from "react-router-dom";
 const AddVlog = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,6 +16,7 @@ const AddVlog = () => {
     try {
       axios.post("/admin/vlogs", data).then((res) => {
         reset();
+        navigate("/admin/vlogs");
       });
     } catch (error) {
       console.error("Error adding place:", error);

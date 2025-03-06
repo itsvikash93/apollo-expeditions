@@ -10,7 +10,6 @@ const AdminUpcomingTrips = () => {
 
   useEffect(() => {
     axios.get("/upcoming-trips").then((res) => {
-      console.log(res.data);
       setUpcomingTrips(res.data);
       setLoading(false);
     });

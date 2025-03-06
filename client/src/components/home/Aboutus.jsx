@@ -2,20 +2,26 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <section className="py-10 bg_Third flex flex-col w-full">
+    <section className="pt-10 bg_Third flex flex-col w-full">
       <div className=" px-4 lg:px-6 ">
         <div className="w-full text-center flex flex-col items-center justify-center">
-          <h2 className="text-3xl custom-font1 tracking-wide uppercase mb-4">
+          <h2 className="text-4xl custom-font1 tracking-wide uppercase mb-4">
             About Us
           </h2>
-          <h3 className="text-4xl custom-font1 mb-6 mt-2 tracking-wide">
-            Apollo Expeditions
-          </h3>
-          <p className="text-xl text-center sm:w-[60%] leading-relaxed text-gray-700">
-            We craft extraordinary adventures that blend luxury with thrill. Our
-            expert team designs unique expeditions that push boundaries while
-            ensuring comfort and unforgettable memories at every step of your
-            journey.
+
+          <p className="text-xl text-justify w-full sm:w-[60%] leading-relaxed text-gray-700">
+            Apollo Expeditions is an adventure travel company based in India. We
+            craft unforgettable travel experiences that blend comfort with
+            thrill and take you beyond the ordinary. With years of experience,
+            dedicated team of adventure travel experts & local guides, we design
+            unique adventure trips & expeditions that push boundaries while
+            ensuring comfort & safety. From adrenaline pumping activities like
+            trekking, rock climbing, river rafting, paragliding and zip lining
+            to more serene experiences like hiking, wildlife safaris, cultural
+            explorations, spiritual journeys and city tours we offer something
+            for every kind of traveller. We prioritize responsible travel
+            practices ensuring that each journey leaves a positive impact on
+            both the environment and the communities we visit.
           </p>
         </div>
       </div>

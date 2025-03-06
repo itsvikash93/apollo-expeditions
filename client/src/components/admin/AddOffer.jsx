@@ -3,14 +3,15 @@ import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import SideNav from "./SideNav";
 import SideNavMobile from "./SideNavMobile";
+import { useNavigate } from "react-router-dom";
 const AddOffer = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const handleFormSubmit = (data) => {
     try {
       axios.post("/admin/offers", data).then((res) => {
-        // console.log(res.data);
-        console.log("offer added");
         reset();
+        navigate("/admin/offers");
       });
     } catch (error) {
       console.error("Error adding offer:", error);

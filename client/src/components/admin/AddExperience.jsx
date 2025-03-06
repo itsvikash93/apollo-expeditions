@@ -3,7 +3,9 @@ import axios from "../../utils/axios";
 import { useForm } from "react-hook-form";
 import SideNav from "./SideNav";
 import SideNavMobile from "./SideNavMobile";
+import { useNavigate } from "react-router-dom";
 const AddExperience = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,24 +18,23 @@ const AddExperience = () => {
       axios
         .post("/admin/experiences", { image: data.image[0].name })
         .then((res) => {
-          axios
-            .put(res.data.imageUrl, data.image[0], {
-              headers: {
-                "Content-Type": "image/jpeg",
-              },
-            })
-            .then((res) => {
-              console.log("image uploaded");
-            });
+          axios.put(res.data.imageUrl, data.image[0], {
+            headers: {
+              "Content-Type": "image/jpeg",
+            },
+          });
           reset();
-          console.log("experience added");
+          navigate("/admin/experiences");
         });
     } catch (error) {
       console.error("Error adding experience:", error);
     }
   };
   return (
-    <div id="main" className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
+    <div
+      id="main"
+      className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row"
+    >
       <SideNav />
       <SideNavMobile />
       <div className="container h-full w-full sm:w-[80%] sm:pt-10 mx-auto py-4 sm:py-8 px-4">
