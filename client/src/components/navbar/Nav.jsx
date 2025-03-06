@@ -77,7 +77,7 @@ const Nav = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden rounded-md text-black"
+            className="lg:hidden rounded-md text-black"
           >
             {isMenuOpen ? (
               <MdClose className="text-2xl" />
@@ -224,7 +224,7 @@ const Nav = () => {
           </AnimatePresence>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex text-md font-semibold justify-between gap-8 px-6 h-full pt-3">
+          <div className="hidden lg:flex text-md font-semibold justify-between gap-8 px-6 h-full pt-3">
             <Link to="/" className="hover:text-gray-500">
               Home
             </Link>

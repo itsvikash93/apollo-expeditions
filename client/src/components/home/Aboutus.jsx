@@ -3,9 +3,9 @@ import React from "react";
 const AboutUs = () => {
   return (
     <section className="py-10 bg_Third flex flex-col w-full">
-      <div className=" px-4 sm:px-6 ">
+      <div className=" px-4 lg:px-6 ">
         <div className="w-full text-center flex flex-col items-center justify-center">
-          <h2 className="text-4xl custom-font1 tracking-wide uppercase mb-4">
+          <h2 className="text-3xl custom-font1 tracking-wide uppercase mb-4">
             About Us
           </h2>
           <h3 className="text-4xl custom-font1 mb-6 mt-2 tracking-wide">

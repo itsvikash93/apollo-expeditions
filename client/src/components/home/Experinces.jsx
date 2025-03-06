@@ -7,16 +7,17 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 const Experinces = ({ experiences }) => {
   return (
-    <section className="py-5 sm:py-10 bg_Third flex flex-col w-full ">
-      <div className="px-4 sm:px-6">
-        <div className="text-center mb-5 sm:mb-16">
-          <h3 className="mt-2 text-4xl custom-font1 tracking-wide sm:text-4xl">
+    <section className="py-5 lg:py-10 bg_Third flex flex-col w-full ">
+      <div className="px-4 lg:px-6">
+        <div className="text-center mb-5 lg:mb-16">
+          <h3 className="mt-2 text-4xl custom-font1 tracking-wide">
             Traveler's Experiences
           </h3>
         </div>
 
-        <div className="w-full">
+        <div className="w-full h-[30vh] sm:h-[25vh] lg:h-[40vh]">
           <Swiper
+            className="h-full w-full relative"
             spaceBetween={30}
             loop={true}
             autoplay={{
@@ -25,6 +26,7 @@ const Experinces = ({ experiences }) => {
             }}
             pagination={{
               clickable: true,
+              // el: ".swiper-pagination",
             }}
             breakpoints={{
               320: { slidesPerView: 1 }, // Mobile
@@ -35,11 +37,11 @@ const Experinces = ({ experiences }) => {
             modules={[Pagination, Autoplay]}
           >
             {experiences.map((experience, index) => (
-              <SwiperSlide key={index} className="w-full">
+              <SwiperSlide key={index} className="w-full sm:w-[50%] h-full">
                 <img
                   src={experience.imageUrl}
                   alt={`Experience ${index + 1}`}
-                  className="w-full h-auto rounded-md object-cover"
+                  className="w-full h-full rounded-md object-cover"
                 />
               </SwiperSlide>
             ))}

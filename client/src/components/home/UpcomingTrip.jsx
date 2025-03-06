@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const UpcomingTrip = ({ trip, onBookNow }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-103">
+    <div className="w-full sm:w-[48%] lg:w-[26%] bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-103">
       <div className="relative h-48">
         <img
           src={trip.imageUrl}
@@ -30,14 +30,14 @@ const UpcomingTrip = ({ trip, onBookNow }) => {
           <Link
             to={trip.pdfUrl}
             target="_blank"
-            className="mt-4 px-5 py-2 bg-black Third flex gap-2 cursor-pointer justify-center align-center font-bold rounded-lg shadow-md"
+            className="mt-4 px-3 sm:px-5 py-2 bg-black Third flex gap-2 cursor-pointer justify-center items-center font-bold rounded-lg shadow-md"
           >
             <span className="text-white">More Details</span>
             <FaArrowRightLong />
           </Link>
           <button
             onClick={onBookNow}
-            className="mt-4 px-5 py-2 bg-green-700 Third flex gap-2 cursor-pointer justify-center align-center font-bold rounded-lg shadow-md"
+            className="mt-4 block px-3 sm:px-5 py-2 bg-green-700 Third flex gap-2 cursor-pointer justify-center items-center font-bold rounded-lg shadow-md"
           >
             <span className="text-white">Book Now</span>
             <FaArrowRightLong />

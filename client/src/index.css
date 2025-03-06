@@ -13,39 +13,47 @@
 }
 :root {
   --FirstColor: #4c5637;
-  --SecondColor: #A4B465;
+  --SecondColor: #a4b465;
   --ThirdColor: #faf8eb;
 }
 
-.First{
+/* .swiper-pagination {
+  position: absolute;
+  bottom: 
+  20px !important;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+} */
+
+.First {
   color: var(--FirstColor);
 }
-.First1{
+.First1 {
   color: var(--FirstColor);
 }
 
-.First1:hover{
+.First1:hover {
   color: var(--SecondColor);
 }
 
-.Second{
+.Second {
   color: var(--SecondColor);
 }
 
-.Third{
+.Third {
   color: var(--ThirdColor);
 }
 
-.bg_First{
+.bg_First {
   background-color: var(--FirstColor);
 }
 
-.bg_Second{
+.bg_Second {
   background-color: var(--SecondColor);
-
 }
 
-.bg_Third{
+.bg_Third {
   background-color: var(--ThirdColor);
 }
 
@@ -55,4 +63,3 @@
 .custom-font1 {
   font-family: "PatuaOne-Regular", sans-serif;
 }
-

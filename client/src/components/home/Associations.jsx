@@ -10,18 +10,18 @@ const Associations = ({ partners }) => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-12 ">
+        <div className="flex flex-wrap justify-center items-center gap-5 lg:gap-12 ">
           {partners.map((partner) => (
             <div
               key={partner._id}
-              className="flex flex-col items-center bg-white rounded-lg p-8 shadow-md transition-transform duration-300 hover:scale-105"
+              className="w-full sm:w-[48%] lg:w-[26%] flex flex-col items-center bg-white rounded-lg p-5 px-8 shadow-md transition-transform duration-300 hover:scale-103"
             >
               <img
                 src={partner.imageUrl}
                 alt={partner.name}
-                className="h-24 w-auto mb-6 object-contain rounded-full"
+                className="h-30 w-30 mb-6 object-cover rounded-full"
               />
-              <h4 className="text-xl custom-font1 mb-2">{partner.name}</h4>
+              <h4 className="text-xl custom-font1 ">{partner.name}</h4>
               <p className="text-gray-600 text-center">{partner.description}</p>
             </div>
           ))}

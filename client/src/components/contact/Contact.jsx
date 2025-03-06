@@ -16,9 +16,9 @@ const Contact = () => {
         </h1>
 
         {/* Main Container */}
-        <div className="flex flex-col sm:flex-row gap-10 sm:gap-40 mt-5 sm:mt-10 justify-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-40 mt-5 sm:mt-10 justify-center">
           {/* Left Section: Contact Details */}
-          <div className="w-full sm:w-[30%] bg-[#edead3] rounded-xl text-First shadow-xl p-4 sm:p-10 ">
+          <div className="w-full lg:w-[30%] bg-[#edead3] rounded-xl text-First shadow-xl p-4 sm:p-6 lg:p-10 ">
             <h2 className="text-3xl font-semibold text-gray-500">
               Get in Touch
             </h2>
@@ -63,8 +63,8 @@ const Contact = () => {
           </div>
 
           {/* Right Section: Contact Form */}
-          <div className="w-full sm:w-[30%] bg-[#edead3] shadow-xl px-2 py-4 sm:p-10 rounded-xl">
-            <form className="p-4">
+          <div className="w-full lg:w-[30%] bg-[#edead3] shadow-xl px-2 p-4 sm:p-6 lg:p-10 rounded-xl">
+            <form className="">
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium">
                   Name
@@ -131,7 +131,7 @@ const Contact = () => {
         </div>
 
         {/* Google Map Section */}
-        <div className="h-80 sm:mx-20 sm:my-10 rounded-xl overflow-hidden flex justify-center relative">
+        <div className="h-80 lg:mx-20 lg:my-10 rounded-xl overflow-hidden flex justify-center relative">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110204.75443551115!2d77.93473335243701!3d30.325402625777514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929c356c888af%3A0x4c3562c032518799!2sDehradun%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1741098124598!5m2!1sen!2sin"
             className="w-full h-full"

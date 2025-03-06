@@ -34,14 +34,14 @@ const Home = () => {
       <Nav className="absolute" />
       <Hero />
       <AboutUs />
-      <div className="sm:py-10 bg-Secondary flex flex-col">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-5 sm:mb-16">
-            <h3 className="mt-2 text-4xl custom-font1 tracking-wide ">
+      <div className="lg:py-10 bg-Secondary flex flex-col">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-5 sm:mb-8 lg:mb-16">
+            <h3 className="mt-2 sm:mt-0 text-4xl custom-font1 tracking-wide ">
               Upcoming Expeditions & Trips
             </h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center flex-shrink-0 gap-8">
             {upcomingTrips.map((trip) => (
               <UpcomingTrip
                 key={trip._id}
