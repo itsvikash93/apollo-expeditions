@@ -1,6 +1,5 @@
 const offerModel = require("../models/offer.model");
 const packageModel = require("../models/package.model");
-const enquiryModel = require("../models/enquiry.model");
 const popularPlaceModel = require("../models/popular-place.model");
 const vlogModel = require("../models/vlog.model");
 const { putObjectURL, deleteObject } = require("../config/aws-setup");
@@ -11,8 +10,44 @@ const partnerModel = require("../models/partner.model");
 const { default: slugify } = require("slugify");
 const tripEnquiryModel = require("../models/trip-enquiry.model");
 const packageEnquiryModel = require("../models/package-enquiry.model");
+const adminModel = require("../models/admin.model");
+const bcrypt = require("bcryptjs");
 
 require("dotenv").config();
+
+module.exports.adminLogin = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const admin = await adminModel.findOne({ email });
+    if (!admin) return res.status(400).json({ message: "Invalid credentials" });
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if (!isMatch)
+      return res.status(400).json({ message: "Invalid credentials" });
+
+    const token = admin.generateToken();
+    res.status(200).json({
+      token,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports.adminLogout = async (req, res) => {
+  res.clearCookie("token");
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
+module.exports.addAdmin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const admin = await adminModel.create({ email, password });
+    res.status(201).json(admin);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports.getEnquiries = async (req, res) => {
   try {
@@ -38,23 +73,6 @@ module.exports.deleteEnquiry = async (req, res) => {
     res.status(200).send({ message: "Enquiry deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
-  }
-};
-
-module.exports.getEnquiryById = async (req, res) => {
-  try {
-    const enquiry = await enquiryModel
-      .findById(req.params.id)
-      .populate("state", "name") // Populate state name
-      .populate("place", "name"); // Populate place name
-
-    if (!enquiry) {
-      return res.status(404).send("Enquiry not found");
-    }
-
-    res.send(enquiry);
-  } catch (error) {
-    res.send(error);
   }
 };
 
@@ -93,7 +111,6 @@ module.exports.deleteOffer = async (req, res) => {
 module.exports.addPackage = async (req, res) => {
   try {
     const offerId = req.body.offer;
-    // console.log(req.body);
     const offer = await offerModel.findById(offerId);
 
     if (!offer) {
@@ -120,7 +137,9 @@ module.exports.addPackage = async (req, res) => {
     }
 
     const package = await packageModel.create({
-      name: req.body.name,
+      title: req.body.title,
+      location: req.body.location,
+      date: req.body.date,
       offersAndPackages: offerId,
       description: req.body.description,
       imageKey: imageKey,

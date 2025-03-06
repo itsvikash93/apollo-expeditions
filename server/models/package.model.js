@@ -2,7 +2,17 @@ const mongoose = require("mongoose");
 
 // Define the Place schema
 const packageSchema = new mongoose.Schema({
-  name: {
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  location: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  date: {
     type: String,
     required: true,
     trim: true,

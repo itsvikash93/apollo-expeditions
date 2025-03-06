@@ -20,9 +20,19 @@ const packageEnquirySchema = mongoose.Schema({
     type: String,
     trim: true,
   },
-  packageTitle: {
+  title: {
     type: String,
     required: [true, "Package title is required"],
+    trim: true,
+  },
+  location: {
+    type: String,
+    required: [true, "Package location is required"],
+    trim: true,
+  },
+  date: {
+    type: String,
+    required: [true, "Package date is required"],
     trim: true,
   },
 });

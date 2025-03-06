@@ -51,8 +51,6 @@ const AddUpcomingTrip = () => {
         pdf: data.pdf[0].name,
       };
 
-      console.log(formData);
-
       axios.post("/admin/upcoming-trips", formData).then((res) => {
         const res1 = axios.put(res.data.imageUrl, data.image[0], {
           headers: {

@@ -20,17 +20,17 @@ const tripEnquirySchema = mongoose.Schema({
     type: String,
     trim: true,
   },
-  tripTitle: {
+  title: {
     type: String,
     required: [true, "Trip title is required"],
     trim: true,
   },
-  tripLocation: {
+  location: {
     type: String,
     required: [true, "Trip location is required"],
     trim: true,
   },
-  tripDate: {
+  date: {
     type: String,
     required: [true, "Trip date is required"],
     trim: true,

@@ -7,7 +7,7 @@ import Associations from "./Associations";
 import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import axios from "../../utils/axios";
-import EnquiryForm from "./EnquiryForm"; // Import Modal
+import EnquiryForm from "../EnquiryForm"; // Import Modal
 
 const Home = () => {
   const [upcomingTrips, setUpcomingTrips] = useState([]);
@@ -60,7 +60,8 @@ const Home = () => {
 
       {selectedTrip && (
         <EnquiryForm
-          trip={selectedTrip}
+          type="trip"
+          element={selectedTrip}
           onClose={() => setSelectedTrip(null)}
         />
       )}

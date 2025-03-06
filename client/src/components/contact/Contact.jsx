@@ -3,8 +3,13 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import qr from "../../assets/QR.jpg";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
-
+import { useForm } from "react-hook-form";
+import axios from "../../utils/axios";
 const Contact = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    axios.post("/enquiries/contact", data);
+  };
   return (
     <div className="w-full flex flex-col">
       <Nav className="absolute" />
@@ -16,7 +21,7 @@ const Contact = () => {
         </h1>
 
         {/* Main Container */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-40 mt-5 sm:mt-10 justify-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-40 my-5 mb-10 sm:mt-10 justify-center">
           {/* Left Section: Contact Details */}
           <div className="w-full lg:w-[30%] bg-[#edead3] rounded-xl text-First shadow-xl p-4 sm:p-6 lg:p-10 ">
             <h2 className="text-3xl font-semibold text-gray-500">
@@ -64,33 +69,28 @@ const Contact = () => {
 
           {/* Right Section: Contact Form */}
           <div className="w-full lg:w-[30%] bg-[#edead3] shadow-xl px-2 p-4 sm:p-6 lg:p-10 rounded-xl">
-            <form className="">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-sm font-medium">
                   Name
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
                   className="p-2 mt-1 block w-full rounded-md border shadow-sm  sm:text-sm text-First bg-transparent"
                   placeholder="Your name"
+                  {...register("name")}
                 />
               </div>
 
               <div className="mb-4">
-                <label
-                  htmlFor="contactNo"
-                  className="block text-sm font-medium"
-                >
+                <label htmlFor="phone" className="block text-sm font-medium">
                   Contact Number
                 </label>
                 <input
                   type="text"
-                  name="contactNo"
-                  id="contactNo"
-                  className="p-2 mt-1 block w-full rounded-md border shadow-sm sm:text-sm text-First bg-transparent"
+                  className="p-2 mt-1 block w-full rounded-md border shadow-sm  sm:text-sm text-First bg-transparent"
                   placeholder="Your contact number"
+                  {...register("phone")}
                 />
               </div>
 
@@ -100,10 +100,9 @@ const Contact = () => {
                 </label>
                 <input
                   type="email"
-                  name="email"
-                  id="email"
-                  className="p-2 mt-1 block w-full rounded-md border shadow-sm sm:text-sm text-First bg-transparent"
+                  className="p-2 mt-1 block w-full rounded-md border shadow-sm  sm:text-sm text-First bg-transparent"
                   placeholder="Your email"
+                  {...register("email")}
                 />
               </div>
 
@@ -112,11 +111,10 @@ const Contact = () => {
                   Message
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
                   rows={3}
                   className="p-2 mt-1 block w-full rounded-md border border-First shadow-sm focus:ring-Second focus:border-Second sm:text-sm text-First bg-transparent"
                   placeholder="Your message"
+                  {...register("message")}
                 ></textarea>
               </div>
 

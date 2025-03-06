@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 
@@ -7,14 +7,18 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const SideNavMobile = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    navigate("/admin/login");
+  };
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <nav className="bg-[#A3D1C6] text-[#000] block sm:hidden relative w-full">
-      <div className="flex justify-between items-center z-[999] px-4 py-5 ">
+      <div className="flex justify-between items-center z-[999] px-4 py-3 ">
         <h1 className="text-3xl font-bold">Admin</h1>
         <button onClick={toggleMenu} className="text-2xl">
           {isOpen ? (
@@ -31,7 +35,7 @@ const SideNavMobile = () => {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.3 }}
-            className="text-2xl px-4 py-5 absolute z-[99] left-0 w-full bg-[#A3D1C6]"
+            className="text-xl px-4 py-5 absolute z-[99] left-0 w-full bg-[#A3D1C6]"
           >
             <Link
               to="/admin/dashboard"
@@ -94,7 +98,8 @@ const SideNavMobile = () => {
               Manage Enquiries
             </Link>
             <Link
-              to="/logout"
+              // to="/admin/logout"
+              onClick={handleLogout}
               className="block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full hover:bg-[#5A9B8A] transition"
             >
               Logout

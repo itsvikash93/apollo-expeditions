@@ -23,10 +23,38 @@ const AddPackage = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const formatDate = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+
+    const startMonth = start.toLocaleString("en-US", { month: "short" });
+    const endMonth = end.toLocaleString("en-US", { month: "short" });
+
+    const startYear = start.getFullYear();
+    const endYear = end.getFullYear();
+
+    if (startYear === endYear) {
+      if (startMonth === endMonth) {
+        return `${startDay}-${endDay} ${startMonth} ${startYear}`;
+      } else {
+        return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${startYear}`;
+      }
+    } else {
+      return `${startDay} ${startMonth} ${startYear} - ${endDay} ${endMonth} ${endYear}`;
+    }
+  };
+
   const handleFormSubmit = (data) => {
     try {
+      const formattedDate = formatDate(data.startDate, data.endDate); // Format date range
+
       const formData = {
         ...data,
+        date: formattedDate,
         image: data.image[0].name,
         pdf: data.pdf[0].name,
       };
@@ -53,7 +81,10 @@ const AddPackage = () => {
     }
   };
   return (
-    <div id="main" className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row">
+    <div
+      id="main"
+      className="bg-gray-100 w-full h-screen flex flex-col sm:flex-row"
+    >
       <SideNav />
       <SideNavMobile />
       <div className="container h-full w-full sm:w-[80%] sm:pt-10 mx-auto py-4 sm:py-8 px-4 overflow-y-auto">
@@ -66,17 +97,17 @@ const AddPackage = () => {
           className="bg-white shadow-md rounded-lg py-4 px-3 sm:p-6"
         >
           <div className="mb-4">
-            <label htmlFor="name" className="block font-medium text-gray-700">
-              Package Name
+            <label htmlFor="title" className="block font-medium text-gray-700">
+              Package Title
             </label>
             <input
               type="text"
-              {...register("name", { required: "Package name is required" })}
+              {...register("title", { required: "Package title is required" })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
-              placeholder="Enter package name"
+              placeholder="Enter package title"
             />
-            {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            {errors.title && (
+              <p className="text-red-500 text-sm">{errors.title.message}</p>
             )}
           </div>
 
@@ -101,7 +132,54 @@ const AddPackage = () => {
               <p className="text-red-500 text-sm">{errors.offer.message}</p>
             )}
           </div>
+          <div className="mb-4">
+            <label className="block font-medium">Location:</label>
+            <input
+              type="text"
+              {...register("location", { required: "Location is required" })}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              placeholder="Enter package location"
+            />
+            {errors.location && (
+              <p className="text-red-500 text-sm">{errors.location.message}</p>
+            )}
+          </div>
 
+          <div className="flex flex-col sm:flex-row gap-6 mb-6">
+            <div className="w-full">
+              <label className="block text-gray-700 font-semibold mb-2">
+                Start Date:
+              </label>
+              <input
+                type="date"
+                {...register("startDate", {
+                  required: "Start Date is required",
+                })}
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#3D8D7A] transition duration-200"
+              />
+              {errors.startDate && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.startDate.message}
+                </p>
+              )}
+            </div>
+
+            <div className="w-full">
+              <label className="block text-gray-700 font-semibold mb-2">
+                End Date:
+              </label>
+              <input
+                type="date"
+                {...register("endDate", { required: "End Date is required" })}
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#3D8D7A] transition duration-200"
+              />
+              {errors.endDate && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.endDate.message}
+                </p>
+              )}
+            </div>
+          </div>
           <div className="mb-4">
             <label
               htmlFor="description"

@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const {
+  adminLogin,
+  adminLogout,
+  addAdmin,
   getEnquiries,
-  getEnquiryById,
   addOffer,
   deleteOffer,
   addPackage,
@@ -22,8 +24,10 @@ const {
   deleteEnquiry,
 } = require("../controllers/admin.controller");
 
+router.post("/login", adminLogin);
+router.post("/logout", adminLogout);
+router.post("/add-admin", addAdmin);
 router.get("/enquiries", getEnquiries);
-router.get("/enquiries/:id", getEnquiryById);
 router.delete("/enquiries/:id", deleteEnquiry);
 router.post("/offers", addOffer);
 router.delete("/offers/:id", deleteOffer);

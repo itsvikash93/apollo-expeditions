@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
-import { useParams, Link } from "react-router-dom";
-import { HiOutlineDocumentDownload } from "react-icons/hi";
+import { useParams } from "react-router-dom";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
 import Package from "./Package";
-import EnquiryForm from "./EnquiryForm";
+import EnquiryForm from "../EnquiryForm";
 const Offers = () => {
   const { offerSlug } = useParams();
   const [packages, setPackages] = useState([]);
@@ -77,7 +76,7 @@ const Offers = () => {
             </div>
           </div>
         ) : (
-          <div className="w-full flex flex-wrap justify-center gap-4 flex-shrink-0">
+          <div className="w-full flex flex-wrap justify-center gap-4 lg:gap-10 flex-shrink-0">
             {packages.map((pkg) => (
               <Package
                 key={pkg._id}
@@ -92,7 +91,8 @@ const Offers = () => {
 
       {selectedPackage && (
         <EnquiryForm
-          pkg={selectedPackage}
+          type="package"
+          element={selectedPackage}
           onClose={() => setSelectedPackage(null)}
         />
       )}

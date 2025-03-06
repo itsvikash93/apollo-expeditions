@@ -26,7 +26,8 @@ import AdminExperiences from "../components/admin/pages/AdminExperiences";
 import AdminUpcomingTrips from "../components/admin/pages/AdminUpcomingTrips";
 import AddUpcomingTrip from "../components/admin/AddUpcomingTrip";
 import AdminEnquiries from "../components/admin/pages/AdminEnquiries";
-
+import AdminLogin from "../components/admin/AdminLogin";
+import PrivateRoutes from "./PrivateRoutes";
 const Routing = () => {
   return (
     <Routes>
@@ -36,25 +37,29 @@ const Routing = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/vlogs" element={<Vlogs />} />
       {/* Admin routes */}
-      <Route path="/admin/dashboard" element={<Dashboard />} />
-      <Route path="/admin/offers" element={<AdminOffers />} />
-      <Route path="/admin/offers/add" element={<AddOffer />} />
-      <Route path="/admin/experiences" element={<AdminExperiences />} />
-      <Route path="/admin/experiences/add" element={<AddExperience />} />
-      <Route path="/admin/partners" element={<AdminPartners />} />
-      <Route path="/admin/partners/add" element={<AddPartner />} />
-      <Route path="/admin/upcoming-trips" element={<AdminUpcomingTrips />} />
-      <Route path="/admin/upcoming-trips/add" element={<AddUpcomingTrip />} />
-      <Route path="/admin/packages" element={<AdminPackages />} />
-      <Route path="/admin/packages/add" element={<AddPackage />} />
-      <Route path="/admin/countries" element={<AdminCountries />} />
-      <Route path="/admin/countries/add" element={<AddCountry />} />
-      <Route path="/admin/popular-places" element={<AdminPopularPlaces />} />
-      <Route path="/admin/popular-places/add" element={<AddPopularPlace />} />
-      <Route path="/admin/vlogs" element={<AdminVlogs />} />
-      <Route path="/admin/vlogs/add" element={<AddVlog />} />
-      <Route path="/admin/enquiries" element={<AdminEnquiries />} />
-      <Route path="/admin/enquiries/:id" element={<EnquiryDetails />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={<PrivateRoutes />}>
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/offers" element={<AdminOffers />} />
+        <Route path="/admin/offers/add" element={<AddOffer />} />
+        <Route path="/admin/experiences" element={<AdminExperiences />} />
+        <Route path="/admin/experiences/add" element={<AddExperience />} />
+        <Route path="/admin/partners" element={<AdminPartners />} />
+        <Route path="/admin/partners/add" element={<AddPartner />} />
+        <Route path="/admin/upcoming-trips" element={<AdminUpcomingTrips />} />
+        <Route path="/admin/upcoming-trips/add" element={<AddUpcomingTrip />} />
+        <Route path="/admin/packages" element={<AdminPackages />} />
+        <Route path="/admin/packages/add" element={<AddPackage />} />
+        <Route path="/admin/countries" element={<AdminCountries />} />
+        <Route path="/admin/countries/add" element={<AddCountry />} />
+        <Route path="/admin/popular-places" element={<AdminPopularPlaces />} />
+        <Route path="/admin/popular-places/add" element={<AddPopularPlace />} />
+        <Route path="/admin/vlogs" element={<AdminVlogs />} />
+        <Route path="/admin/vlogs/add" element={<AddVlog />} />
+        <Route path="/admin/enquiries" element={<AdminEnquiries />} />
+        <Route path="/admin/enquiries/:id" element={<EnquiryDetails />} />
+      </Route>
     </Routes>
   );
 };

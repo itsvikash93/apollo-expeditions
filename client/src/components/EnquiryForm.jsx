@@ -1,181 +1,117 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import axios from "../utils/axios";
+import { motion } from "framer-motion";
 
-const EnquiryForm = () => {
-  const [states, setStates] = useState([]);
-  const [places, setPlaces] = useState([]);
-  const { register, handleSubmit, reset } = useForm();
-  const getData = () => {
-    axios.get("/states").then((res) => {
-      setStates(res.data);
-    });
-    axios.get("/places").then((res) => {
-      setPlaces(res.data);
-    });
+const EnquiryForm = ({ type, element, onClose }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm();
+  const formRef = useRef(null);
+
+  const onSubmit = async (data) => {
+    try {
+      await axios
+        .post(`/enquiries/${type}`, {
+          ...data,
+          title: element.title,
+          location: element.location,
+          date: element.date,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            onClose();
+            reset();
+          }
+        });
+    } catch (error) {
+      console.error("Error submitting enquiry:", error);
+    }
   };
+
   useEffect(() => {
-    getData();
-  }, []);
-  const handleFormSubmit = (data) => {
-    axios.post("/enquiry-form", data).then((res) => {
-      console.log(res);
-    });
-  };
+    const handleClickOutside = (event) => {
+      if (formRef.current && !formRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
-    <div className="container mx-auto p-4 max-w-2xl">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-t-lg">
-        <h1 className="text-3xl font-bold text-white">Package Enquiry</h1>
-        <p className="text-blue-100 mt-2">
-          Fill out the form below to enquire about our travel packages
-        </p>
-      </div>
-      <form
-        onSubmit={handleSubmit(handleFormSubmit)}
-        className="bg-white p-8 rounded-b-lg shadow-lg border border-gray-200"
+    <div className="fixed inset-0 bg-white/40 backdrop-blur-sm flex justify-center items-center z-50">
+      <motion.div
+        ref={formRef}
+        className="bg-white p-6 rounded-lg shadow-lg w-96 relative"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
       >
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="mb-4">
-            <label
-              htmlFor="name"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              {...register("name")}
-              required
-              className="shadow-sm border-2 border-gray-200 rounded-lg w-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-              placeholder="Enter your full name"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              {...register("email")}
-              required
-              className="shadow-sm border-2 border-gray-200 rounded-lg w-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-              placeholder="your.email@example.com"
-            />
-          </div>
-        </div>
+        <h2 className="text-2xl font-bold mb-4 text-Primary">Enquiry Form</h2>
+        {element && (
+          <>
+            <p className="mb-2">
+              <strong>{type.charAt(0).toUpperCase() + type.slice(1)}:</strong>{" "}
+              {element.title}
+            </p>
+            <p className="mb-2">
+              <strong>Location:</strong> {element.location}
+            </p>
+            <p className="mb-2">
+              <strong>Date:</strong> {element.date}
+            </p>
+          </>
+        )}
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="mb-4">
-            <label
-              htmlFor="phone"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Phone
-            </label>
-            <input
-              type="tel"
-              {...register("phone")}
-              required
-              className="shadow-sm border-2 border-gray-200 rounded-lg w-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-              placeholder="+91 XXXXX XXXXX"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="visitDate"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Preferred Visit Date
-            </label>
-            <input
-              type="date"
-              {...register("visitDate")}
-              required
-              className="shadow-sm border-2 border-gray-200 rounded-lg w-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-            />
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="mb-4">
-            <label
-              htmlFor="state"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              State
-            </label>
-            <select
-              {...register("state")}
-              required
-              className="shadow-sm border-2 border-gray-200 rounded-lg w-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-            >
-              <option value="" disabled selected>
-                Select your state
-              </option>
-              {states.map((state) => (
-                <option value={state._id} key={state._id}>
-                  {state.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="place"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Place
-            </label>
-            <select
-              {...register("place")}
-              required
-              className="shadow-sm border-2 border-gray-200 rounded-lg w-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-            >
-              <option value="" disabled selected>
-                Select destination
-              </option>
-              {places.map((place) => (
-                <option value={place._id} key={place._id}>
-                  {place.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="mb-6">
-          <label
-            htmlFor="message"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Message
-          </label>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="text"
+            {...register("name", { required: true })}
+            placeholder="Your Name"
+            className="w-full p-2 border rounded mb-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <input
+            type="email"
+            {...register("email", { required: true })}
+            placeholder="Your Email"
+            className="w-full p-2 border rounded mb-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <input
+            type="text"
+            {...register("phone", { required: true })}
+            placeholder="Phone Number"
+            className="w-full p-2 border rounded mb-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
           <textarea
             {...register("message")}
-            rows="4"
-            className="shadow-sm border-2 border-gray-200 rounded-lg w-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-            placeholder="Tell us about your travel plans and any specific requirements..."
+            placeholder="Your Message"
+            className="w-full p-2 border rounded mb-2 focus:outline-none focus:ring-2 focus:ring-green-600"
           ></textarea>
-        </div>
 
-        <input
-          type="hidden"
-          name="date"
-          value="<%= new Date().toISOString() %>"
-        />
-
-        <div className="flex items-center justify-end">
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition duration-200 transform hover:scale-105"
+            className="w-full bg-green-600 text-white p-2 rounded mt-2 hover:bg-green-700 transition"
+            disabled={isSubmitting}
           >
-            Submit Enquiry
+            {isSubmitting ? "Submitting..." : "Submit Enquiry"}
           </button>
-        </div>
-      </form>
+        </form>
+
+        <button
+          onClick={onClose}
+          className="absolute cursor-pointer top-2 right-4 text-red-600 hover:text-red-800 transition"
+        >
+          ✖
+        </button>
+      </motion.div>
     </div>
   );
 };

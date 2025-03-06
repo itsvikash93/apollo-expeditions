@@ -8,7 +8,7 @@ const Dashboard = () => {
       <SideNav />
       <SideNavMobile />
 
-      <div className="container mx-auto sm:pt-10 px-4 w-full sm:w-[80%] h-full">
+      <div className="container mx-auto sm:pt-10 px-4 py-4 w-full sm:w-[80%] h-full">
         <h2 className="text-3xl font-semibold mb-6">
           Welcome to the Admin Dashboard
         </h2>

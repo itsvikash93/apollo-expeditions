@@ -1,7 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideNav = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    navigate("/admin/login");
+  };
   return (
     <nav className="bg-[#A3D1C6] text-[#00000] px-4 pt-10 hidden sm:block sm:w-[20%] h-full">
       <h1 className=" text-3xl font-bold">Admin Dashboard</h1>
@@ -71,7 +76,8 @@ const SideNav = () => {
           Manage Enquiries
         </Link>
         <Link
-          to="/logout"
+          to="/admin/logout"
+          onClick={handleLogout}
           className=" block my-2 px-2 py-2 rounded bg-[#6FB6A5] w-full "
         >
           Logout

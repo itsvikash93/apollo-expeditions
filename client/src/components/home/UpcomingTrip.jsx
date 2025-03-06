@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const UpcomingTrip = ({ trip, onBookNow }) => {
   return (
     <div className="w-full sm:w-[48%] lg:w-[26%] bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-103">
-      <div className="relative h-48">
+      <div className="relative h-56">
         <img
           src={trip.imageUrl}
           alt={trip.title}
