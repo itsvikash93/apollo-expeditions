@@ -9,7 +9,7 @@ const AboutUs = () => {
             About Us
           </h2>
 
-          <p className="text-xl text-justify w-full sm:w-[60%] leading-relaxed text-gray-700">
+          <p className="text-xl text-justify w-full sm:w-[85%] text-xs sm:text-xl leading-relaxed text-gray-700">
             Apollo Expeditions is an adventure travel company based in India. We
             craft unforgettable travel experiences that blend comfort with
             thrill and take you beyond the ordinary. With years of experience,

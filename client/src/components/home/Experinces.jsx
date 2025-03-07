@@ -11,7 +11,7 @@ import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 const Experinces = ({ experiences }) => {
   const swiperRef = useRef(null);
   return (
-    <section className="pt-5 bg_Third flex flex-col w-full">
+    <section className="pt-5 bg_Third flex flex-col w-full sm:w-auto sm:items-center">
       <div className="px-4 sm:py-5 lg:px-6">
         <div className="text-center mb-5 lg:mb-10">
           <h3 className="mt-2 text-4xl custom-font1 tracking-wide">
@@ -19,7 +19,7 @@ const Experinces = ({ experiences }) => {
           </h3>
         </div>
 
-        <div className="w-full h-[30vh] sm:h-[25vh] lg:h-[40vh] flex flex-col items-center">
+        <div className="w-full sm:w-[200vw] h-[30vh] sm:h-[25vh] lg:h-[50vh] flex flex-col items-center">
           <Swiper
             key={experiences.length}
             className="mySwiper h-full w-full relative "

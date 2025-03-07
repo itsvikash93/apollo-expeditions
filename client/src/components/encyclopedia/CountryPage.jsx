@@ -93,7 +93,7 @@ const CountryPage = () => {
           </div>
         ) : (
           <div className="text-center First mt-8 flex justify-center items-center ">
-            <div className="bg-white w-1/3 p-8 shadow-md rounded-lg">
+            <div className="bg-white w-[80%] p-8 shadow-md rounded-lg">
               <svg
                 className="w-16 h-16 mx-auto mb-4 text-gray-400"
                 fill="none"
