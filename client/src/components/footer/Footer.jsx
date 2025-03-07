@@ -33,9 +33,9 @@ const Footer = () => {
                 <FaEnvelope />
                 <a
                   className="hover:underline"
-                  href="mailto:apolloexpeditions@outlook.in"
+                  href="mailto:apolloexpeditions@gmail.com"
                 >
-                  apolloexpeditions@outlook.in
+                  apolloexpeditions@gmail.com
                 </a>
               </li>
             </ul>

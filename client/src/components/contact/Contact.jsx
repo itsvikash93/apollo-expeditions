@@ -1,6 +1,6 @@
 import React from "react";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
-import qr from "../../assets/QR.jpg";
+import qr from "../../assets/QR.png";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
 import { useForm } from "react-hook-form";
@@ -35,10 +35,10 @@ const Contact = () => {
               <div className="flex items-center gap-2">
                 <FaEnvelope />
                 <a
-                  href="mailto:apolloexpeditions@outlook.in"
+                  href="mailto:apolloexpeditions@gmail.com"
                   className="hover:underline First"
                 >
-                  apolloexpeditions@outlook.in
+                  apolloexpeditions@gmail.com
                 </a>
               </div>
 
@@ -51,7 +51,7 @@ const Contact = () => {
 
               <div className="flex items-center gap-2">
                 <FaMapMarkerAlt />
-                <p>Jaipur, Rajasthan (IN) | Dehradun, Uttarakhand (IN)</p>
+                <p className="text-gray-600">Jaipur, Rajasthan (IN) | Dehradun, Uttarakhand (IN)</p>
               </div>
 
               <div className="mt-4  flex items-center">
