@@ -304,18 +304,23 @@ const Nav = () => {
                     className="absolute bg_Third shadow-md mt-3 -translate-x-8 rounded-b-md w-44 left-0 overflow-hidden"
                   >
                     {countries.length > 0 ? (
-                      countries.map((country) => (
-                        <Link
-                          key={country.slug}
-                          to={`/encyclopedia/${country.slug}`}
-                          className="block px-4 py-2 text-center hover:text-gray-500"
-                          onClick={() =>
-                            handleNavigation(`/encyclopedia/${country.slug}`)
-                          }
-                        >
-                          {country.name}
-                        </Link>
-                      ))
+                      countries.map(
+                        (country) =>
+                          country.popularPlaces.length > 0 && (
+                            <Link
+                              key={country.slug}
+                              to={`/encyclopedia/${country.slug}`}
+                              className="block px-4 py-2 text-center hover:text-gray-500"
+                              onClick={() =>
+                                handleNavigation(
+                                  `/encyclopedia/${country.slug}`
+                                )
+                              }
+                            >
+                              {country.name}
+                            </Link>
+                          )
+                      )
                     ) : (
                       <p className="px-4 py-2 hover:text-gray-500">
                         No Countries
