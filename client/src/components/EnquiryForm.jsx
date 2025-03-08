@@ -55,7 +55,9 @@ const EnquiryForm = ({ type, element, onClose }) => {
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.3 }}
       >
-        <h2 className="text-2xl font-bold mb-4 text-Primary">Enquiry Form</h2>
+        <h2 className="text-2xl custom-font1 tracking-wider text-center font-bold mb-4 text-Primary">
+          Enquiry Form
+        </h2>
         {element && (
           <>
             <p className="mb-2">

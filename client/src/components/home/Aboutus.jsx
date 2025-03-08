@@ -5,11 +5,11 @@ const AboutUs = () => {
     <section className="pt-10 bg_Third flex flex-col w-full">
       <div className=" px-4 lg:px-6 ">
         <div className="w-full text-center flex flex-col items-center justify-center">
-          <h2 className="text-4xl custom-font1 tracking-wide uppercase mb-4">
+          <h2 className="text-3xl custom-font1 tracking-wide uppercase mb-4">
             About Us
           </h2>
 
-          <p className="text-xl text-justify w-full sm:w-[85%] text-xs sm:text-xl leading-relaxed text-gray-700">
+          <p className="text-sm text-center lg:text-xl w-full sm:w-[85%] leading-relaxed text-gray-700">
             Apollo Expeditions is an adventure travel company based in India. We
             craft unforgettable travel experiences that blend comfort with
             thrill and take you beyond the ordinary. With years of experience,

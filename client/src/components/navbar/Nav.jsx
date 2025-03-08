@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { ImCross } from "react-icons/im";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { MdClose } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
@@ -36,7 +35,6 @@ const Nav = () => {
           axios.get(`/countries`),
           axios.get(`/offers`),
         ]);
-
         setCountries(countriesRes.data);
         setOffers(offersRes.data);
       } catch (error) {
@@ -135,21 +133,24 @@ const Nav = () => {
                       >
                         {/* Assuming offers is an array of offer objects */}
                         {offers.length > 0 ? (
-                          offers.map((offer) => (
-                            <Link
-                              key={offer._id}
-                              to={`/offers/${offer.slug}`}
-                              className="block px-4 py-2 hover:text-gray-500"
-                              onClick={() =>
-                                handleNavigation(`/offers/${offer.slug}`)
-                              }
-                            >
-                              {offer.name}
-                            </Link>
-                          ))
+                          offers.map(
+                            (offer) =>
+                              offer.packages.length > 0 && (
+                                <Link
+                                  key={offer._id}
+                                  to={`/offers/${offer.slug}`}
+                                  className="block px-4 py-2 hover:text-gray-500"
+                                  onClick={() =>
+                                    handleNavigation(`/offers/${offer.slug}`)
+                                  }
+                                >
+                                  {offer.name}
+                                </Link>
+                              )
+                          )
                         ) : (
                           <p className="px-4 py-2 hover:text-gray-500">
-                            No Offers
+                            No Offers Available
                           </p>
                         )}
                       </motion.div>
@@ -186,20 +187,23 @@ const Nav = () => {
                       >
                         {/* Assuming countries is an array of country objects */}
                         {countries.length > 0 ? (
-                          countries.map((country) => (
-                            <Link
-                              key={country._id}
-                              to={`/encyclopedia/${country.slug}`}
-                              className="block px-4 py-2 hover:text-gray-500"
-                              onClick={() =>
-                                handleNavigation(
-                                  `/encyclopedia/${country.slug}`
-                                )
-                              }
-                            >
-                              {country.name}
-                            </Link>
-                          ))
+                          countries.map(
+                            (country) =>
+                              country.popularPlaces.length > 0 && (
+                                <Link
+                                  key={country._id}
+                                  to={`/encyclopedia/${country.slug}`}
+                                  className="block px-4 py-2 hover:text-gray-500"
+                                  onClick={() =>
+                                    handleNavigation(
+                                      `/encyclopedia/${country.slug}`
+                                    )
+                                  }
+                                >
+                                  {country.name}
+                                </Link>
+                              )
+                          )
                         ) : (
                           <p className="px-4 py-2 hover:text-gray-500">
                             No Countries
@@ -254,18 +258,21 @@ const Nav = () => {
                     className="absolute bg_Third shadow-md mt-3 -translate-x-15 rounded-b-md left-0 w-64 overflow-hidden"
                   >
                     {offers.length > 0 ? (
-                      offers.map((offer) => (
-                        <Link
-                          key={offer._id}
-                          to={`/offers/${offer.slug}`}
-                          className="block px-2 py-2 text-center hover:text-gray-500"
-                          onClick={() =>
-                            handleNavigation(`/offers/${offer.slug}`)
-                          }
-                        >
-                          {offer.name}
-                        </Link>
-                      ))
+                      offers.map(
+                        (offer) =>
+                          offer.packages.length > 0 && (
+                            <Link
+                              key={offer._id}
+                              to={`/offers/${offer.slug}`}
+                              className="block px-2 py-2 text-center hover:text-gray-500"
+                              onClick={() =>
+                                handleNavigation(`/offers/${offer.slug}`)
+                              }
+                            >
+                              {offer.name}
+                            </Link>
+                          )
+                      )
                     ) : (
                       <p className="px-4 py-2 hover:text-gray-500">No Offers</p>
                     )}

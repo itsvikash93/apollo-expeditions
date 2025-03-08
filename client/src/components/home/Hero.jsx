@@ -72,8 +72,8 @@ const Hero = () => {
                 alt={`Hero Image ${index + 1}`}
                 className="w-full h-full object-cover blur-[0px]"
               />
-              <div className="absolute w-[80%] top-1/2 left-1/2 flex justify-center items-center transform -translate-x-1/2 -translate-y-1/2 text-[#edead3] text-center">
-                <h2 className="w-fit text-4xl px-2 sm:text-7xl custom-font tracking-wider  text-center backdrop-blur-xs">
+              <div className="absolute top-1/2 left-1/2 flex justify-center items-center transform -translate-x-1/2 -translate-y-1/2 text-[#edead3] text-center">
+                <h2 className="w-fit text-4xl sm:text-7xl custom-font tracking-wider text-center">
                   {image.text}
                 </h2>
               </div>

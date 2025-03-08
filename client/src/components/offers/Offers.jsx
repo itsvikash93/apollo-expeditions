@@ -4,8 +4,8 @@ import { useParams, Link } from "react-router-dom";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import Footer from "../footer/Footer";
 import Nav from "../navbar/Nav";
-import Package from "./Package";
 import EnquiryForm from "../EnquiryForm";
+import Enquiry from "../Enquiry";
 const Offers = () => {
   const { offerSlug } = useParams();
   const [packages, setPackages] = useState([]);
@@ -49,6 +49,7 @@ const Offers = () => {
   return (
     <div className="w-full min-h-screen bg_Third flex flex-col">
       <Nav className="absolute" />
+
       <div className="px-4 pt-18 sm:pt-0 py-8 sm:px-6 sm:mt-24">
         <h1 className="text-3xl sm:text-3xl lg:text-5xl tracking-wide custom-font1 mb-6 sm:mb-8 lg:mb-12 text-center">
           Travel Packages
@@ -77,11 +78,11 @@ const Offers = () => {
             </div>
           </div>
         ) : (
-          <div className="w-full flex flex-wrap justify-center gap-4 flex-shrink-0">
+          <div className="w-full flex flex-wrap justify-center gap-8 flex-shrink-0">
             {packages.map((pkg) => (
-              <Package
+              <Enquiry
                 key={pkg._id}
-                pkg={pkg}
+                elem={pkg}
                 onBookNow={() => setSelectedPackage(pkg)}
               />
             ))}

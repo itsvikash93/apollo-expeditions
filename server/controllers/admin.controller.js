@@ -17,8 +17,8 @@ const contactUsModel = require("../models/contactus.model");
 require("dotenv").config();
 
 module.exports.adminLogin = async (req, res) => {
-  const { email, password } = req.body;
   try {
+    const { email, password } = req.body;
     const admin = await adminModel.findOne({ email });
     if (!admin) return res.status(400).json({ message: "Invalid credentials" });
 

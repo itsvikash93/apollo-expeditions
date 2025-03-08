@@ -14,7 +14,7 @@ const Package = ({ pkg, onBookNow }) => {
       </div>
 
       <div className="py-4 px-5">
-        <h4 className="text-xl custom-font1 text-Primary">{pkg.name}</h4>
+        <h4 className="text-xl custom-font1 text-Primary">{pkg.title}</h4>
         <h4 className="text-lg text-Primary mb-2">{pkg.description}</h4>
 
         <div className="flex justify-between">
