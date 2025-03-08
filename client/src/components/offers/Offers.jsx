@@ -55,29 +55,7 @@ const Offers = () => {
           Travel Packages
         </h1>
 
-        {packages.length === 0 && !loading && !error ? (
-          <div className="text-center First mt-8 flex justify-center items-center ">
-            <div className="bg-white w-1/3 p-8 shadow-md rounded-lg">
-              <svg
-                className="w-16 h-16 mx-auto mb-4 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M20 12H4M12 20V4"
-                />
-              </svg>
-              <p className="text-xl font-medium">
-                No packages available at this time.
-              </p>
-              <p className="mt-2">Please check back later for new offerings.</p>
-            </div>
-          </div>
-        ) : (
+        {packages.length > 0 && (
           <div className="w-full flex flex-wrap justify-center gap-8 flex-shrink-0">
             {packages.map((pkg) => (
               <Enquiry

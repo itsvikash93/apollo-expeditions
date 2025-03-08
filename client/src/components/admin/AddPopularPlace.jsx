@@ -67,17 +67,17 @@ const AddPopularPlace = () => {
           className="bg-white shadow-md rounded-lg py-4 px-3 sm:p-6"
         >
           <div className="mb-4">
-            <label htmlFor="name" className="block font-medium text-gray-700">
-              Place Name
+            <label htmlFor="title" className="block font-medium text-gray-700">
+              Place Title
             </label>
             <input
               type="text"
-              {...register("name", { required: "Place name is required" })}
+              {...register("title", { required: "Place title is required" })}
               className="w-full p-2 border border-gray-300 rounded mt-1"
-              placeholder="Enter place name"
+              placeholder="Enter place title"
             />
-            {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            {errors.title && (
+              <p className="text-red-500 text-sm">{errors.title.message}</p>
             )}
           </div>
 

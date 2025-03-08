@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Enquiry = ({ elem, onBookNow }) => {
   return (
     <div className="w-full sm:w-[48%] lg:w-[26%] bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-103">
-      <div className="relative h-48">
+      <div className="relative h-56">
         <img
           src={elem.imageUrl}
           alt={elem.title}
@@ -15,7 +15,7 @@ const Enquiry = ({ elem, onBookNow }) => {
         />
       </div>
 
-      <div className="py-4 px-5">
+      <div className="py-4 px-5 w-full ">
         <h4 className="text-xl custom-font1 text-Primary">{elem.title}</h4>
         <h4 className="text-lg text-Primary mb-2">{elem.description}</h4>
         <div className="flex items-center text-Fourth mb-2">
@@ -26,21 +26,21 @@ const Enquiry = ({ elem, onBookNow }) => {
           <BsCalendar2 className="mr-2 text-lg" />
           <h5 className="text-lg">{elem.date}</h5>
         </div>
-        <div className="flex items-center text-Fourth mb-4">
+        <div className="flex items-center text-Fourth mb-2">
           <FaIndianRupeeSign className="mr-2 text-lg" />
-          <h5 className="text-lg">5000/-</h5>
+          <h5 className="text-lg">{elem.price}</h5>
         </div>
         <div className="flex justify-between">
           <Link
             to={elem.pdfUrl}
             target="_blank"
-            className="mt-4 px-3 sm:px-5 py-2 bg-black Third cursor-pointer r font-bold rounded-lg shadow-md"
+            className="mt-3 inline-block px-3 sm:px-5 py-2 bg-black Third cursor-pointer font-bold rounded-lg shadow-md"
           >
             <span className="text-white">More Details</span>
           </Link>
           <button
             onClick={onBookNow}
-            className="mt-4  px-3 sm:px-5 py-2 bg-orange-500 Third  cursor-pointer  font-bold rounded-lg shadow-md"
+            className="mt-3 px-3 sm:px-5 py-2 bg-orange-500 Third  cursor-pointer  font-bold rounded-lg shadow-md"
           >
             <span className="text-white">Book Now</span>
           </button>

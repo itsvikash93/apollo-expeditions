@@ -203,6 +203,19 @@ const AddPackage = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block font-medium">Price:</label>
+            <input
+              type="number"
+              {...register("price", { required: "Price is required" })}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              placeholder="Enter package price"
+            />
+            {errors.price && (
+              <p className="text-red-500 text-sm">{errors.price.message}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
             <label htmlFor="image" className="block font-medium text-gray-700">
               Image
             </label>

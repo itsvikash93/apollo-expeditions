@@ -338,8 +338,7 @@ module.exports.addPopularPlace = async (req, res) => {
     }
 
     const popularPlace = await popularPlaceModel.create({
-      name: req.body.name,
-      description: req.body.description,
+      ...req.body,
       country: countryId,
       imageKey: imageKey,
       pdfKey: pdfKey,

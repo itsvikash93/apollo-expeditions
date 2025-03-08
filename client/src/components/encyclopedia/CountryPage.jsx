@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "../../utils/axios";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Nav from "../navbar/Nav";
@@ -51,7 +51,7 @@ const CountryPage = () => {
     <div className="min-h-screen bg_Third flex flex-col">
       <Nav className="absolute" />
       <div className="container mx-auto px-4 pt-18 sm:pt-0 py-8 sm:px-6 sm:mt-24">
-        <div className="text-center mb-12">
+        <div className="text-center mb-5 sm:mb-8 lg:mb-10">
           <h1 className="text-4xl md:text-5xl custom-font1 tracking-wide mb-4">
             Discover {country.name}
           </h1>
@@ -62,56 +62,37 @@ const CountryPage = () => {
           </p>
         </div>
 
-        {places && places.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {places.length > 0 && (
+          <div className="w-full flex flex-wrap justify-center gap-8 flex-shrink-0">
             {places.map((place) => (
               <div
                 key={place._id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="bg-white w-full sm:w-[48%] lg:w-[26%] rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-103"
               >
-                <div className="relative">
+                <div className="relative h-56 w-full">
                   <img
-                    src={place.image}
-                    alt={place.name}
-                    className="w-full h-64 object-cover"
+                    src={place.imageUrl}
+                    alt={place.title}
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-6">
-                  <h2 className="text-2xl tracking-wider custom-font1  mb-3">
-                    {place.name}
-                  </h2>
-                  <p className="text-gray-600 mb-6 line-clamp-3">
+                <div className="py-4 px-5">
+                  <h4 className="text-xl custom-font1 text-Primary">
+                    {place.title}
+                  </h4>
+                  <h4 className="text-lg text-Primary mb-2">
                     {place.description}
-                  </p>
-                  <button className="w-full bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center gap-2">
-                    Explore More
-                    <FaArrowRightLong className=" mt-[3px]" />
-                  </button>
+                  </h4>
+                  <Link
+                    to={place.pdfUrl}
+                    target="_blank"
+                    className="mt-3 inline-block px-3 sm:px-5 py-2 bg-black Third cursor-pointer font-bold rounded-lg shadow-md"
+                  >
+                    <span className="text-white">More Details</span>
+                  </Link>
                 </div>
               </div>
             ))}
-          </div>
-        ) : (
-          <div className="text-center First mt-8 flex justify-center items-center ">
-            <div className="bg-white w-[80%] p-8 shadow-md rounded-lg">
-              <svg
-                className="w-16 h-16 mx-auto mb-4 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M20 12H4M12 20V4"
-                />
-              </svg>
-              <p className="text-xl font-medium">
-                No popular places available for {country.name}
-              </p>
-              <p className="mt-2">Please check back later for updates.</p>
-            </div>
           </div>
         )}
       </div>

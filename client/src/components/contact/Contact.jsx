@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import qr from "../../assets/QR.png";
 import Footer from "../footer/Footer";
@@ -6,9 +6,12 @@ import Nav from "../navbar/Nav";
 import { useForm } from "react-hook-form";
 import axios from "../../utils/axios";
 const Contact = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const [success, setSuccess] = useState(false);
   const onSubmit = (data) => {
     axios.post("/enquiries/contact", data);
+    reset();
+    setSuccess(true);
   };
   return (
     <div className="w-full flex flex-col">
@@ -124,6 +127,9 @@ const Contact = () => {
               >
                 Submit
               </button>
+              {success && (
+                <p className="text-green-500 text-sm">Message sent successfully</p>
+              )}
             </form>
           </div>
         </div>
